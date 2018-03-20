@@ -1,0 +1,1 @@
+void addWallet(int argc, char *argv[]);
