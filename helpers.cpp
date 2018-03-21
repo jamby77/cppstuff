@@ -3,9 +3,12 @@
 #include <stdio.h>
 #include <time.h>
 #include "helpers.h"
+
 void printUsage()
 {
-    std::cout << "usage: (add-wallet|make-order|make-transaction) (amount) (name|walletid)" << std::endl;
+    std::cout
+        << "usage: (add-wallet|make-order|make-transaction) (amount) (name|walletid)"
+        << std::endl;
 }
 
 unsigned int timeid()
