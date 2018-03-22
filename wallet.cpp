@@ -123,3 +123,24 @@ void listWallets()
     }
     free(wallets);
 }
+
+void walletInfo(unsigned walletId)
+{
+    std::ifstream walletFile(WALLET_FILE_NAME, std::ios::binary);
+    if (!walletFile.is_open())
+    {
+        std::cout << "error: cannot read wallets file";
+    }
+    int walletsCount = countWallets(walletFile);
+    Wallet *wallets = loadWallets(walletsCount, walletFile);
+
+    for (size_t i = 0; i < walletsCount; i++)
+    {
+        if (wallets[i].id == walletId)
+        {
+            std::cout << "Name: "<<wallets[i].owner << ", money: "<<wallets[i].fiatMoney << ", FMIcoins: <here>\n";
+            break;
+        }
+    }
+    free(wallets);
+}

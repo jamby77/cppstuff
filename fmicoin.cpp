@@ -12,11 +12,24 @@ int main(int argc, char *argv[])
         listWallets();
         return 1;
     }
+    std::cout << argv[1] << std::endl;
 
     if (strncmp(argv[1], addWalletCommand, strlen(addWalletCommand)) == 0)
     {
         unsigned walletid = addWallet(argc, argv);
         std::cout << "added: " << walletid << std::endl;
+    }
+    else if (strncmp(argv[1], walletInfoCommand, strlen(walletInfoCommand)) == 0)
+    {
+        int id = atoi(argv[2]);
+        if (id == 0)
+        {
+            std::cout << "error: wallet id could not be parsed\n";
+        }
+        else
+        {
+            walletInfo(id);
+        }
     }
     else
     {

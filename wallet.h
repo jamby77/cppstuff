@@ -12,3 +12,4 @@ struct Wallet
 unsigned addWallet(int argc, char *argv[]);
 void listWallets();
 Wallet *loadWallets(int wc, std::ifstream &fs);
+void walletInfo(unsigned walletId);

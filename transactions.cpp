@@ -37,14 +37,21 @@ void storeTransaction(const Transaction &transaction)
 
     trFile.close();
 }
-
-void initialTransaction(unsigned walletId, double fiatMoney)
+Transaction addTransaction(unsigned senderId, unsigned receiverId, double fmiCoins)
 {
     Transaction t;
     t.time = timeid();
-    t.senderId = HOLLY_MOTHER_ACCOUNT;
-    t.receiverId = walletId;
-    t.fmiCoins = fiatMoney / FMICOIN_RATE;
+    t.senderId = senderId;
+    t.receiverId = receiverId;
+    t.fmiCoins = fmiCoins;
     storeTransaction(t);
+
+    return t;
+}
+
+void initialTransaction(unsigned walletId, double fiatMoney)
+{
+    Transaction t = addTransaction(HOLLY_MOTHER_ACCOUNT, walletId, fiatMoney / FMICOIN_RATE);
+
     outputTransactionToStdout(t);
 }
