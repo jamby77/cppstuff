@@ -14,3 +14,5 @@ const long HOLLY_MOTHER_ACCOUNT = 4294967295;
 const unsigned short FMICOIN_RATE = 375;
 
 void initialTransaction(unsigned walletId, double fiatMoney);
+Transaction addTransaction(unsigned senderId, unsigned receiverId, double fmiCoins);
+double calculateTotalForWallet(unsigned wId);

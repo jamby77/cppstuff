@@ -18,10 +18,10 @@
     1.  All arguments are required
     2.  As in all Command Line arguments, all of the data comes in as char[] so amount will have to be converted to double - see atof - http://www.cplusplus.com/reference/cstdlib/atof/
     3.  name can potentially have multiple words - Iva Mavrodieva Mavrodieva - they will come as separate arguments from argv[3] and on, all these need to be glued together with ' ' - see https://stackoverflow.com/a/1995070/4376125
-    4.  Generate unique wallet id - see example in messenger
-    5.  Load wallet.dat (if exists) into Wallet[] variable
-    6.  On each command, add parsed data to Wallet[] and then write it to wallet.dat
-    7.  Create transaction for each new wallet equal to amount / 375 (COIN_RATE)
+    4.  Generate unique wallet id - see example in helpers.cpp::nextId()
+        <!-- 5.  Load wallet.dat (if exists) into Wallets[] variable -->
+        <!-- 6.  On each command, add parsed data to Wallets[] and then write it to wallet.dat -->
+    5.  Create transaction for each new wallet equal to amount / 375 (COIN_RATE)
         1.  sender_id is 4294967295 receiver_id is wallet id
         2.  All transactions are stored in transaction.dat
         3.  Transaction consists of unsigned sender_id, unsigned receiver_id, double fmi_coins, long long time
