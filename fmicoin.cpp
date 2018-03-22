@@ -9,16 +9,19 @@ int main(int argc, char *argv[])
     {
         // no arguments are passed to the program, this is error
         printUsage();
+        listWallets();
         return 1;
     }
 
     if (strncmp(argv[1], addWalletCommand, strlen(addWalletCommand)) == 0)
     {
-        addWallet(argc, argv);
+        unsigned walletid = addWallet(argc, argv);
+        std::cout << "added: " << walletid << std::endl;
     }
     else
     {
         printUsage();
+        listWallets();
         return 1;
     }
 }

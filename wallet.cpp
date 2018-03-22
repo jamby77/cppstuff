@@ -1,6 +1,6 @@
 #include <iostream>
 #include <fstream>
-#include <string>
+#include <string.h>
 #include "./wallet.h"
 #include "./helpers.h"
 #include "./transacitons.h"
@@ -60,7 +60,7 @@ void setWalletOwner(Wallet &wallet, int argc, char *argv[])
     }
 }
 
-void addWallet(int argc, char *argv[])
+unsigned addWallet(int argc, char *argv[])
 {
     if (argc < 4)
     {
@@ -75,4 +75,51 @@ void addWallet(int argc, char *argv[])
     setWalletOwner(wallet, argc, argv);
 
     storeWallet(wallet);
+    return wallet.id;
+}
+
+int countWallets(std ::ifstream &fs)
+{
+    int length;
+    fs.seekg(0, std::ios::end);
+    length = fs.tellg();
+    fs.seekg(0, std::ios::beg);
+    return length / sizeof(Wallet);
+}
+
+Wallet *loadWallets(int wc, std::ifstream &fs)
+{
+    Wallet *ws = new (std::nothrow) Wallet[wc];
+    if (ws == nullptr)
+    {
+        std::cout << "error: not enough memory to load wallets\n";
+        return nullptr;
+    }
+    // read all wallets into array
+    fs.read((char *)ws, sizeof(Wallet) * wc);
+
+    if (!fs)
+    {
+        std::cout << "error : while reading the database! \n";
+        delete[] ws;
+        return nullptr;
+    }
+    return ws;
+}
+
+void listWallets()
+{
+    std::ifstream walletFile(WALLET_FILE_NAME, std::ios::binary);
+    if (!walletFile.is_open())
+    {
+        std::cout << "error: cannot read wallets file";
+    }
+    int walletsCount = countWallets(walletFile);
+    Wallet *wallets = loadWallets(walletsCount, walletFile);
+
+    for (size_t i = 0; i < walletsCount; i++)
+    {
+        outputWalletToStdout(wallets[i]);
+    }
+    free(wallets);
 }
