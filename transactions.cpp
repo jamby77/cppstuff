@@ -1,8 +1,8 @@
 #include <iostream>
 #include <fstream>
-#include <string>
-#include "./helpers.h"
-#include "./transacitons.h"
+#include <string.h>
+#include "helpers.h"
+#include "transacitons.h"
 
 void writeTransactionToFile(const Transaction &transaction, std::ofstream &ofs)
 {

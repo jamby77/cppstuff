@@ -1,13 +1,15 @@
-#include <stdio.h>
-#include <time.h>
+#ifndef __HELPERS_H__
+#define __HELPERS_H__
 
-const char *const addWalletCommand = "add-wallet";
-const char *const makeOrderCommand = "make-order";
-const char *const quitCommand = "quit";
-const char *const walletInfoCommand = "wallet-info";
-const char *const attractInvestorsCommand = "attract-investors";
+#define ADD_WALLET_COMMAND "add-wallet"
+#define MAKE_ORDER_COMMAND "make-order"
+#define QUIT_COMMAND "quit"
+#define WALLET_INFO_COMMAND "wallet-info"
+#define ATTRACT_INVESTORS_COMMAND "attract-investors"
 
 void printUsage();
 
 unsigned int timeid();
 int nextId();
+
+#endif

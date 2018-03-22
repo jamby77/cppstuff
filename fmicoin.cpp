@@ -14,12 +14,12 @@ int main(int argc, char *argv[])
     }
     // std::cout << argv[1] << std::endl;
 
-    if (strncmp(argv[1], addWalletCommand, strlen(addWalletCommand)) == 0)
+    if (strncmp(argv[1], ADD_WALLET_COMMAND, strlen(ADD_WALLET_COMMAND)) == 0)
     {
         unsigned walletid = addWallet(argc, argv);
         std::cout << "added: " << walletid << std::endl;
     }
-    else if (strncmp(argv[1], walletInfoCommand, strlen(walletInfoCommand)) == 0)
+    else if (strncmp(argv[1], WALLET_INFO_COMMAND, strlen(WALLET_INFO_COMMAND)) == 0)
     {
         int id = atoi(argv[2]);
         if (id == 0)

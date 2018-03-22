@@ -1,9 +1,9 @@
 #include <iostream>
 #include <fstream>
 #include <string.h>
-#include "./wallet.h"
-#include "./helpers.h"
-#include "./transacitons.h"
+#include "helpers.h"
+#include "transacitons.h"
+#include "wallet.h"
 
 void writeWalletToFile(const Wallet &wallet, std::ofstream &ofs)
 {
@@ -36,7 +36,7 @@ void storeWallet(const Wallet &wallet)
     walletFile.close();
 }
 
-void setWalletOwner(Wallet &wallet, const int argc, const char *argv[])
+void setWalletOwner(Wallet &wallet, const int argc, char *argv[])
 {
     size_t len;
 
@@ -58,13 +58,13 @@ void setWalletOwner(Wallet &wallet, const int argc, const char *argv[])
     }
 }
 
-unsigned addWallet(int argc, const char *argv[])
+unsigned addWallet(int argc, char *argv[])
 {
     if (argc < 4)
     {
         // min 4 arguments expected: prog, command, amount, name
         std::cout << "Not enough arguments to add wallet" << std::endl;
-        return;
+        return -1;
     }
 
     Wallet wallet;

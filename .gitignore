@@ -37,3 +37,5 @@ fmicoin
 # data files
 *.dat
 *.bin
+
+dummy.cpp
