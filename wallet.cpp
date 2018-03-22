@@ -26,8 +26,6 @@ void storeWallet(const Wallet &wallet)
     if (walletFile.is_open())
     {
         writeWalletToFile(wallet, walletFile);
-        outputWalletToStdout(wallet);
-        std::cout << "Successfully added !" << std::endl;
         initialTransaction(wallet.id, wallet.fiatMoney);
     }
     else
@@ -123,7 +121,10 @@ void listWallets()
     }
     free(wallets);
 }
-
+double walletBalance(unsigned walletId)
+{
+    return calculateTotalForWallet(walletId);
+}
 void walletInfo(unsigned walletId)
 {
     std::ifstream walletFile(WALLET_FILE_NAME, std::ios::binary);
@@ -131,16 +132,18 @@ void walletInfo(unsigned walletId)
     {
         std::cout << "error: cannot read wallets file";
     }
-    int walletsCount = countWallets(walletFile);
-    Wallet *wallets = loadWallets(walletsCount, walletFile);
 
-    for (size_t i = 0; i < walletsCount; i++)
+    Wallet w;
+    while (!walletFile.eof())
     {
-        if (wallets[i].id == walletId)
+        walletFile.read((char *)&w, sizeof(Wallet));
+        if (w.id == walletId)
         {
-            std::cout << "Name: "<<wallets[i].owner << ", money: "<<wallets[i].fiatMoney << ", FMIcoins: <here>\n";
+            double coins = walletBalance(walletId);
+            std::cout << "Name: " << w.owner << ", money: " << w.fiatMoney << ", FMIcoins: " << coins << std::endl;
             break;
         }
     }
-    free(wallets);
+
+    walletFile.close();
 }

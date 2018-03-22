@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
         listWallets();
         return 1;
     }
-    std::cout << argv[1] << std::endl;
+    // std::cout << argv[1] << std::endl;
 
     if (strncmp(argv[1], addWalletCommand, strlen(addWalletCommand)) == 0)
     {
