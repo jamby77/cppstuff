@@ -38,7 +38,7 @@ void storeWallet(const Wallet &wallet)
     walletFile.close();
 }
 
-void setWalletOwner(Wallet &wallet, int argc, char *argv[])
+void setWalletOwner(Wallet &wallet, const int argc, const char *argv[])
 {
     size_t len;
 
@@ -60,13 +60,13 @@ void setWalletOwner(Wallet &wallet, int argc, char *argv[])
     }
 }
 
-void addWallet(int argc, char *argv[])
+void addWallet(const int argc, const char *argv[])
 {
     if (argc < 4)
     {
         // min 4 arguments expected: prog, command, amount, name
         std::cout << "Not enough arguments to add wallet" << std::endl;
-        exit(1);
+        return;
     }
 
     Wallet wallet;
