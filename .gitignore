@@ -33,3 +33,7 @@ fmicoin
 *.exe
 *.out
 *.app
+
+# data files
+*.dat
+*.bin

@@ -32,7 +32,7 @@ unsigned int timeid()
 
 int nextId()
 {
-    int id;
+    int id = 1;
     std::ifstream inIdFile("id.bin", std::ios::binary);
     if (!inIdFile.is_open())
     {
