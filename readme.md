@@ -8,7 +8,7 @@
 
 1.  Learn how to use command line arguments in C++
     1.  argv[0] is always program name and can be safely ignored
-    2.  argv[1] is the name of the command to execute, after retreiving it, verify it is allowed
+    2.  argv[1] is the name of the command to execute, after retrieving it, verify it is allowed
     3.  argv[2] and up are values that will vary from command to command and need to be verified
     4.  If there is any error with parsing command line arguments - not enough arguments, wrong arguments, wrong order of arguments etc. a help message must be displayed. The help message can be just fixed text explaining how to use the program.
 
@@ -38,7 +38,7 @@
         1.  Include sender/recipient names, coins transferred
         2.  Include total number of transactions resulting from order and total amount in real money
 2.  Sell
-    1.  Callculate available coins per wallet_id and if less than amount, exit execution with error "No sufficient funds to sell"
+    1.  Calculate available coins per wallet_id and if less than amount, exit execution with error "No sufficient funds to sell"
         a. available coins are result of all transactions for the wallet from transactions.dat
     2.  Check orders.dat for BUY orders
         a. while there are BUY orders, fulfill them until the SELL amount in current order is greater than 0

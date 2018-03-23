@@ -10,6 +10,7 @@
 void printUsage();
 
 unsigned int timeid();
-int nextId();
+
+unsigned nextId();
 
 #endif

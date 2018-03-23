@@ -1,6 +1,6 @@
 #include <iostream>
 #include <fstream>
-#include <string.h>
+#include <cstring>
 #include "helpers.h"
 #include "transacitons.h"
 #include "wallet.h"
@@ -8,11 +8,6 @@
 void writeWalletToFile(const Wallet &wallet, std::ofstream &ofs)
 {
     ofs.write((const char *)&wallet, sizeof(Wallet));
-}
-
-void readWalletFromFile(Wallet &wallet, std::ifstream &ifs)
-{
-    ifs.read((char *)&wallet, sizeof(Wallet));
 }
 
 void outputWalletToStdout(const Wallet &wallet)
@@ -64,11 +59,11 @@ unsigned addWallet(int argc, char *argv[])
     {
         // min 4 arguments expected: prog, command, amount, name
         std::cout << "Not enough arguments to add wallet" << std::endl;
-        return -1;
+        return 0;
     }
 
-    Wallet wallet;
-    wallet.fiatMoney = atof(argv[2]);
+    Wallet wallet{};
+    wallet.fiatMoney = strtod(argv[2], nullptr);
     wallet.id = nextId();
     setWalletOwner(wallet, argc, argv);
 
@@ -78,7 +73,7 @@ unsigned addWallet(int argc, char *argv[])
 
 int countWallets(std ::ifstream &fs)
 {
-    int length;
+    long length;
     fs.seekg(0, std::ios::end);
     length = fs.tellg();
     fs.seekg(0, std::ios::beg);
@@ -87,7 +82,7 @@ int countWallets(std ::ifstream &fs)
 
 Wallet *loadWallets(int wc, std::ifstream &fs)
 {
-    Wallet *ws = new (std::nothrow) Wallet[wc];
+    auto *ws = new (std::nothrow) Wallet[wc];
     if (ws == nullptr)
     {
         std::cout << "error: not enough memory to load wallets\n";
@@ -133,14 +128,14 @@ void walletInfo(unsigned walletId)
         std::cout << "error: cannot read wallets file";
     }
 
-    Wallet w;
+    Wallet w{};
     while (!walletFile.eof())
     {
         walletFile.read((char *)&w, sizeof(Wallet));
         if (w.id == walletId)
         {
             double coins = walletBalance(walletId);
-            std::cout << "Name: " << w.owner << ", money: " << w.fiatMoney << ", FMIcoins: " << coins << std::endl;
+            std::cout << "Name: " << w.owner << ", money: " << w.fiatMoney << ", FMICoins: " << coins << std::endl;
             break;
         }
     }

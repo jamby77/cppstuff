@@ -1,6 +1,6 @@
 #include <iostream>
 #include <fstream>
-#include <string.h>
+#include <cstring>
 #include "helpers.h"
 #include "transacitons.h"
 
@@ -9,17 +9,9 @@ void writeTransactionToFile(const Transaction &transaction, std::ofstream &ofs)
     ofs.write((const char *)&transaction, sizeof(Transaction));
 }
 
-void readTransactionFromFile(Transaction &transaction, std::ifstream &ifs)
-{
-    ifs.read((char *)&transaction, sizeof(Transaction));
-}
-
 void outputTransactionToStdout(const Transaction &transaction)
 {
     std::cout << "added transaction for ID: " << transaction.receiverId << ", FMICoins amount: " << transaction.fmiCoins << std::endl;
-    // std::cout << transaction.time << std::endl;
-    // std::cout << transaction.senderId << std::endl;
-    // std::cout << transaction.receiverId << std::endl;
 }
 
 void storeTransaction(const Transaction &transaction)
@@ -38,7 +30,7 @@ void storeTransaction(const Transaction &transaction)
 }
 Transaction addTransaction(unsigned senderId, unsigned receiverId, double fmiCoins)
 {
-    Transaction t;
+    Transaction t{};
     t.time = timeid();
     t.senderId = senderId;
     t.receiverId = receiverId;
@@ -57,7 +49,7 @@ void initialTransaction(unsigned walletId, double fiatMoney)
 
 int countTransactions(std ::ifstream &fs)
 {
-    int length;
+    long length;
     fs.seekg(0, std::ios::end);
     length = fs.tellg();
     fs.seekg(0, std::ios::beg);
@@ -73,7 +65,7 @@ double calculateTotalForWallet(unsigned wId)
         return 0;
     }
     size_t s = sizeof(Transaction);
-    Transaction t;
+    Transaction t{};
     double total = 0;
     while (trFile.good())
     {

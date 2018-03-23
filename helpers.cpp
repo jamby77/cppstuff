@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
-#include <stdio.h>
-#include <time.h>
+#include <cstdio>
+#include <ctime>
 #include "helpers.h"
 
 void printUsage()
@@ -14,7 +14,7 @@ void printUsage()
 unsigned int timeid()
 {
     time_t now;
-    struct tm epoch = {0};
+    struct tm epoch{};
     double seconds;
     time(&now);
 
@@ -30,9 +30,9 @@ unsigned int timeid()
     return (unsigned)seconds;
 }
 
-int nextId()
+unsigned nextId()
 {
-    int id = 1;
+    unsigned id = 1;
     std::ifstream inIdFile("id.bin", std::ios::binary);
     if (!inIdFile.is_open())
     {
