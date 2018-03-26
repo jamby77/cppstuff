@@ -1,13 +1,5 @@
 # Class based file transformation
 
-## Program start
-
-```
-> ./program fileName.txt
-```
-
-On program start, new Transformer should be created with a File referencing the file passed on start.
-
 ## class Main
 
 Main program class, it should handle display of menu and handling of user's commands
@@ -108,3 +100,11 @@ If there is no such word in the line, return -1 - for example above there are on
 ### void Transformer::applyMake(&char line, int offsetStart, int offsetEnd, char \*affix)
 
 Apply transformation to char reference, prepend and append affix at offsetStart and offsetEnd respectivelly
+
+## Program start
+
+```
+> ./program fileName.txt
+```
+
+On program start, new Transformer should be created with a File referencing the file passed on start.
