@@ -40,7 +40,8 @@ If it is, read all its lines in an array
 
 ### class ~File()
 
-Class destructor, use it to save changes made into an **fileName.md** file
+Class destructor, use it to save changes made into an **fileName.md** file.
+
 Optionally, have a flag property isModified for the File and only save it if the flag is true, and file has been modified.
 
 ### char \* File::getLine(int line)
