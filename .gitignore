@@ -40,3 +40,4 @@ fmicoin
 *.bin
 
 dummy.cpp
+cmake-build-debug/
