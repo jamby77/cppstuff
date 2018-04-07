@@ -149,8 +149,12 @@ void LinesArray::removeAt(size_t pos, bool isSorted) {
     }
 
     //else ..rolling back all elements
-    for (size_t i = pos; i < curSize - 1; i++)
-        std::swap(pData[i], pData[i + 1]);
+    for (size_t i = pos; i < curSize - 1; i++){
+        char *temp1 = pData[i];
+        char *temp2 = pData[i + 1];
+        pData[i] = temp2;
+        pData[i + 1] = temp1;
+    }
 
     popBack();
 }
