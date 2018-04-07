@@ -1,25 +1,24 @@
 #include <iostream>
 #include "LinesArray.h"
 
-LinesArray::LinesArray() : pData(nullptr), curSize(0), capacity(0) {
+LinesArray::LinesArray() : pData(nullptr), curSize(0), capacity(0)
+{
 
 }
 
-
-LinesArray::LinesArray(size_t size) : curSize(size), capacity(2 * size) {
-
+LinesArray::LinesArray(size_t size) : curSize(size), capacity(2*size)
+{
     pData = new char *[capacity];
     memset(pData, 0, capacity);
 }
 
-
-LinesArray::~LinesArray() {
-
+LinesArray::~LinesArray()
+{
     clean();
 }
 
-void LinesArray::clean() {
-
+void LinesArray::clean()
+{
     delete[] pData;
 
     pData = nullptr;
@@ -27,10 +26,8 @@ void LinesArray::clean() {
     capacity = 0;
 }
 
-
-void LinesArray::copyFrom(const LinesArray &other) {
-
-
+void LinesArray::copyFrom(const LinesArray &other)
+{
     pData = new char *[other.capacity];
 
     memcpy(pData, other.pData, other.curSize);
@@ -39,15 +36,17 @@ void LinesArray::copyFrom(const LinesArray &other) {
     capacity = other.capacity;
 }
 
-
-LinesArray::LinesArray(const LinesArray &other) : pData(nullptr), curSize(0), capacity(0) {
+LinesArray::LinesArray(const LinesArray &other) : pData(nullptr), curSize(0), capacity(0)
+{
 
     copyFrom(other);
 }
 
-LinesArray &LinesArray::operator=(const LinesArray &other) {
+LinesArray &LinesArray::operator=(const LinesArray &other)
+{
 
-    if (this != &other) {
+    if (this!=&other)
+    {
 
         clean();
         copyFrom(other);
@@ -56,84 +55,83 @@ LinesArray &LinesArray::operator=(const LinesArray &other) {
     return *this;
 }
 
-void LinesArray::resize(size_t newCap) {
+void LinesArray::resize(size_t newCap)
+{
+    char **temp = pData;
 
-    char ** temp = pData;
+    pData = new char *[newCap];
 
-    pData = new char*[newCap];
-
-    memcpy(pData, temp, curSize * sizeof(char));
+    memcpy(pData, temp, curSize*sizeof(char));
 
     capacity = newCap;
 
     delete[] temp;
 }
 
+void LinesArray::pushBack(char *text)
+{
+    if (curSize >= capacity)
+    {
 
-void LinesArray::pushBack(char *text) {
-
-    if (curSize >= capacity) {
-
-        size_t newCap = (capacity == 0) ? 2 : capacity * 2;
+        size_t newCap = (capacity==0) ? 2 : capacity*2;
         resize(newCap);
     }
 
     pData[curSize++] = text;
 }
 
-
-void LinesArray::setAt(size_t pos, char *text) {
-
+void LinesArray::setAt(size_t pos, char *text)
+{
     if (pos >= curSize)
         return;
 
     pData[pos] = text;
 }
 
-char *LinesArray::getAt(size_t pos) const {
-
+char *LinesArray::getAt(size_t pos) const
+{
     if (pos >= curSize)
         return nullptr;
     return pData[pos];
 }
 
-
-size_t LinesArray::getSize() const {
-
+size_t LinesArray::getSize() const
+{
     return curSize;
 }
 
-
-size_t LinesArray::getCapacity() const {
-
+size_t LinesArray::getCapacity() const
+{
     return capacity;
 }
 
-void LinesArray::printInfo() const {
-
+void LinesArray::printInfo() const
+{
     std::cout << "obj at: Ox" << this
               << " buffer starts at: Ox" << pData
               << " length:" << curSize
               << " capacity:" << capacity << std::endl;
 }
 
-void LinesArray::popBack() {
-
+void LinesArray::popBack()
+{
     if (curSize)
         curSize--;
     else
         return;
 
-    if (curSize * 2 <= capacity) {
+    if (curSize*2 <= capacity)
+    {
 
-        size_t newCap = ((curSize == 0) ? 0 : capacity / 2);
+        size_t newCap = ((curSize==0) ? 0 : capacity/2);
         resize(newCap);
     }
 }
 
-void LinesArray::removeAt(size_t pos, bool isSorted) {
-
-    if (pos >= curSize || curSize == 1) { //just removes the last elem
+void LinesArray::removeAt(size_t pos, bool isSorted)
+{
+    if (pos >= curSize || curSize==1)
+    { //just removes the last elem
 
         popBack();
         return;
@@ -141,7 +139,8 @@ void LinesArray::removeAt(size_t pos, bool isSorted) {
 
     //faster version O(1), but can be unexpected
     //from the class' client
-    if (!isSorted) {
+    if (!isSorted)
+    {
 
         pData[pos] = pData[curSize - 1];
         popBack();
@@ -149,7 +148,8 @@ void LinesArray::removeAt(size_t pos, bool isSorted) {
     }
 
     //else ..rolling back all elements
-    for (size_t i = pos; i < curSize - 1; i++){
+    for (size_t i = pos; i < curSize - 1; i++)
+    {
         char *temp1 = pData[i];
         char *temp2 = pData[i + 1];
         pData[i] = temp2;

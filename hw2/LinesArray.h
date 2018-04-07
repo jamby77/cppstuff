@@ -5,10 +5,8 @@
 #ifndef IVA_LINESARRAY_H
 #define IVA_LINESARRAY_H
 
-const size_t MAXLINE_LENGTH = 1024
-
-class LinesArray {
-
+class LinesArray
+{
 private:
 
     char **pData;
@@ -56,7 +54,6 @@ public:
     //wants it to remain sorted after
     //our remove operation
     void removeAt(size_t, bool);
-
 
     size_t getSize() const;
 
