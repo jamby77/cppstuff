@@ -14,4 +14,4 @@ add_executable(hw1
         hw1/wallet.cpp
         hw1/wallet.h)
 add_executable(hw2
-        hw2/txtmd.cpp)
+        hw2/txtmd.cpp hw2/LinesArray.h hw2/LinesArray.cpp)
