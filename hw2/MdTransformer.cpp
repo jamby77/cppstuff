@@ -5,19 +5,14 @@
 #include <cstring>
 #include <iostream>
 #include "MdTransformer.h"
-void MdTransformer::makeBold(unsigned line, unsigned fromWord, unsigned toWord)
+char *MdTransformer::applyMd(const char *text, const char *pad, unsigned fromWord, unsigned toWord)
 {
-    // използвай line за да вземеш точния ред, за пример:
-    const char *text = "The quick brown fox jumps over the lazy dog";
-    // паддинга който се ползва
-    const char *pad = "**";
     // големината на падинга
     size_t padLen = strlen(pad);
 
     // крайния текст трябва да е по-дълъг от оригинала с два пъти повече букви
     size_t textLen = strlen(text);
     char *resText = new char[textLen + padLen*2];
-
     // стартовата и крайната позиция за трансформиране, започват от едно за да съвпаднат с дума № 1
     unsigned startPos = 1;
     unsigned endPos = 1;
@@ -81,9 +76,34 @@ void MdTransformer::makeBold(unsigned line, unsigned fromWord, unsigned toWord)
         }
         st++;
     }
+    return resText;
+}
+
+void MdTransformer::makeBold(unsigned line, unsigned fromWord, unsigned toWord)
+{
+    // използвай line за да вземеш точния ред, за пример:
+    const char *text = "The quick brown fox jumps over the lazy dog";
+    char *resText = applyMd(text, BOLD, fromWord, toWord);
 
     std::cout << resText << std::endl;
 }
+void MdTransformer::makeItalic(int line, unsigned fromWord, unsigned toWord)
+{
+    // използвай line за да вземеш точния ред, за пример:
+    const char *text = "The quick brown fox jumps over the lazy dog";
+    char *resText = applyMd(text, ITALIC, fromWord, toWord);
+
+    std::cout << resText << std::endl;
+}
+void MdTransformer::makeCombine(int line, unsigned fromWord, unsigned toWord)
+{
+    // използвай line за да вземеш точния ред, за пример:
+    const char *text = "The quick brown fox jumps over the lazy dog";
+    char *resText = applyMd(text, COMBINED, fromWord, toWord);
+
+    std::cout << resText << std::endl;
+}
+
 MdTransformer::MdTransformer() {}
 MdTransformer &MdTransformer::operator=(const MdTransformer &other)
 {
