@@ -8,7 +8,7 @@
 void MdTransformer::makeBold(unsigned line, unsigned fromWord, unsigned toWord)
 {
     // използвай line за да вземеш точния ред, за пример:
-    char *text = "The quick brown fox jumps over the lazy dog";
+    const char *text = "The quick brown fox jumps over the lazy dog";
     // паддинга който се ползва
     const char *pad = "**";
     // големината на падинга
