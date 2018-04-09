@@ -8,7 +8,7 @@
 void MdTransformer::makeBold(unsigned line, unsigned fromWord, unsigned toWord)
 {
     // използвай line за да вземеш точния ред, за пример:
-    char text[] = "The quick brown fox jumps over the lazy dog";
+    char *text = "The quick brown fox jumps over the lazy dog";
     // паддинга който се ползва
     const char *pad = "**";
     // големината на падинга
@@ -27,49 +27,57 @@ void MdTransformer::makeBold(unsigned line, unsigned fromWord, unsigned toWord)
     bool beforeFirstWord = true;
     for (int i = 0; i < textLen; ++i)
     {
+        // при всеки спейс сме на следваща дума (може да се подобри да проверява дали text[i+1] е различен от спейс)
         if (text[i]==' ')
         {
             startPos++;
             endPos++;
         }
+        // ако все още не сме приложили падинг преди първата дума, и сме стигнали до нея
         if (beforeFirstWord && startPos==fromWord)
         {
             // началната позиция за трансформирането е намерена
+
+            // ако моментния знак е спейс, го добавяме преди да сложим падинга
             if (text[i]==' ')
             {
-                *(resText + st) = text[i];
-                // мърдаме с един стринг напред
+                resText[st] = text[i];
+                // мърдаме с една позиция напред
                 st++;
             }
+            // добавяме падинга
             for (int j = 0; j < padLen; j++)
             {
-                *(resText + st) = pad[j];
+                resText[st] = pad[j];
+                // при всеки знак от падинга, мърдаме вътрешния брояч напред
                 st++;
             }
+            // ако случайно моментния знак НЕ Е спейс, например в началото на реда (1-ва дума), го добавяме след падинга
             if (text[i]!=' ')
             {
-                *(resText + st) = text[i];
+                resText[st] = text[i];
                 // мърдаме с един стринг напред
                 st++;
             }
-            // ресетваме началната позиция
+            // слагаме флага на фолс, за да не процесваме този иф отново
             beforeFirstWord = false;
             continue;
         }
         else if (endPos==(toWord + 1))
         {
-            // stignali sme poslednata duma
+            // стигнали сме до последната дума, плюс едно т.е. след нея
             for (int j = 0; j < padLen; j++)
             {
-                *(resText + st) = pad[j];
+                resText[st] = pad[j];
                 st++;
             }
-            *(resText + st) = text[i];
+            resText[st] = text[i];
             endPos++;
         }
         else
         {
-            *(resText + st) = text[i];
+            // ако не сме нито преди първата или веднага след последната дума, просто копираме знака в резултата
+            resText[st] = text[i];
         }
         st++;
     }
