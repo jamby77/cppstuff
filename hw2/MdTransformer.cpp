@@ -87,7 +87,7 @@ void MdTransformer::makeBold(unsigned line, unsigned fromWord, unsigned toWord)
 
     std::cout << resText << std::endl;
 }
-void MdTransformer::makeItalic(int line, unsigned fromWord, unsigned toWord)
+void MdTransformer::makeItalic(unsigned line, unsigned fromWord, unsigned toWord)
 {
     // използвай line за да вземеш точния ред, за пример:
     const char *text = "The quick brown fox jumps over the lazy dog";
@@ -95,7 +95,7 @@ void MdTransformer::makeItalic(int line, unsigned fromWord, unsigned toWord)
 
     std::cout << resText << std::endl;
 }
-void MdTransformer::makeCombine(int line, unsigned fromWord, unsigned toWord)
+void MdTransformer::makeCombine(unsigned line, unsigned fromWord, unsigned toWord)
 {
     // използвай line за да вземеш точния ред, за пример:
     const char *text = "The quick brown fox jumps over the lazy dog";
@@ -103,14 +103,35 @@ void MdTransformer::makeCombine(int line, unsigned fromWord, unsigned toWord)
 
     std::cout << resText << std::endl;
 }
+void MdTransformer::makeHeading(unsigned line)
+{
+    const char *text = "The quick brown fox jumps over the lazy dog";
+    // големината на падинга
+    size_t prefixLen = strlen(HEADING);
 
-MdTransformer::MdTransformer() {}
+    // крайния текст трябва да е по-дълъг от оригинала с два пъти повече букви
+    size_t textLen = strlen(text);
+    char *resText = new char[textLen + prefixLen];
+    int st = 0;
+    for (int j = 0; j < prefixLen; j++)
+    {
+        resText[st] = HEADING[j];
+        st++;
+    }
+    for (int i = 0; i < textLen; i++)
+    {
+        resText[st] = text[i];
+        st++;
+    }
+
+    std::cout << resText << std::endl;
+}
+
+MdTransformer::MdTransformer() = default;
 MdTransformer &MdTransformer::operator=(const MdTransformer &other)
 {
-
     if (this!=&other)
     {
-
         clean();
         copyFrom(other);
     }
@@ -119,17 +140,18 @@ MdTransformer &MdTransformer::operator=(const MdTransformer &other)
 }
 void MdTransformer::clean()
 {
-
+    fileRead = nullptr;
 }
 void MdTransformer::copyFrom(const MdTransformer &transformer)
 {
-
+    fileRead = transformer.fileRead;
 }
 MdTransformer::MdTransformer(const MdTransformer &other)
 {
     copyFrom(other);
 }
 MdTransformer::~MdTransformer()
-{
+= default;
+MdTransformer::MdTransformer(File fileRead) : fileRead(fileRead) {}
+MdTransformer::MdTransformer(const char *fileName) : fileRead(fileName) {}
 
-}

@@ -85,21 +85,12 @@ Make a italic transform:
     d. prefix `from` word offset with ***
     d. psotfix `to` word offset with ***
 
-### int Transformer::offset(int wordNum, char \*line)
-
-Find the position of first character of word number wordNum in line. For example if line is:
-
-```
-char *line = "The quick brown fox jumps over the lazy dog";
-
-Transformer::offset(2, line); // should return 4, which is the position of the letter q in word quick
-```
 
 If there is no such word in the line, return -1 - for example above there are only 9 words, a call like: `offset(10, line)` should return -1
 
-### void Transformer::applyMake(&char line, int offsetStart, int offsetEnd, char \*affix)
+### void Transformer::applyMd(const char *text, const char *pad, unsigned fromWord, unsigned toWord)
 
-Apply transformation to char reference, prepend and append affix at offsetStart and offsetEnd respectivelly
+Apply transformation to char reference, prepend and append pad at fromWord and after toWord respectively
 
 ## Program start
 

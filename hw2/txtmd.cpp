@@ -24,4 +24,5 @@ int main() {
     md.makeCombine(1, 2, 3);
     md.makeCombine(1, 3, 3);
     md.makeCombine(1, 4, 6);
+    md.makeHeading(1);
 }
