@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstring>
 #include "LinesArray.h"
 
 LinesArray::LinesArray() : pData(nullptr), curSize(0), capacity(0)
