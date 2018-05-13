@@ -2,7 +2,7 @@
 
 int readNumber();
 
-void writeAnswer();
+void writeAnswer(int answer);
 
 int main()
 {
@@ -11,4 +11,18 @@ int main()
 
     writeAnswer(a + b);
     return 0;
+}
+
+int readNumber()
+{
+    int number;
+
+    std::cin >> number;
+
+    return number;
+}
+
+void writeAnswer(int answer)
+{
+    std::cout << "The answer is: " << answer << std::endl;
 }
