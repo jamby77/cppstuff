@@ -1,8 +1,4 @@
-#include <iostream>
-
-int readNumber();
-
-void writeAnswer(int answer);
+#include "io.h"
 
 int main()
 {
@@ -11,18 +7,4 @@ int main()
 
     writeAnswer(a + b);
     return 0;
-}
-
-int readNumber()
-{
-    int number;
-
-    std::cin >> number;
-
-    return number;
-}
-
-void writeAnswer(int answer)
-{
-    std::cout << "The answer is: " << answer << std::endl;
 }
