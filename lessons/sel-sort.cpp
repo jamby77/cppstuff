@@ -68,9 +68,40 @@ void bubbleSort() {
     printA(arr, l);
 }
 
-int main() {
-    selectionSort();
-    std::cout << "\n";
-    bubbleSort();
-    return 0;
+void multiDimExample() {
+    constexpr int rows = 10;
+    constexpr int cols = 10;
+
+    int product[rows][cols] = {0};
+
+    for (int row = 0; row < rows; ++row) {
+        for (int col = 0; col < cols; ++col) {
+            product[row][col] = row * col;
+        }
+    }
+
+    for (int row = 1; row < rows; ++row) {
+        for (int col = 1; col < cols; ++col) {
+            std::cout << product[row][col] << '\t';
+        }
+        std::cout << '\n';
+    }
+
 }
+
+void cstrings() {
+  char name[25];
+    std::cout << "Enter your name: ";
+
+    std::cin.getline(name, 25);
+    std::cout << "You entered: " << name << "\n";
+}
+//int main() {
+////    selectionSort();
+////    std::cout << "\n";
+////    bubbleSort();
+//
+////multiDimExample();
+//cstrings();
+//    return 0;
+//}
