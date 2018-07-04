@@ -17,4 +17,4 @@ add_executable(hw2
         hw2/txtmd.cpp hw2/LinesArray.h hw2/LinesArray.cpp hw2/MdTransformer.cpp hw2/MdTransformer.h hw2/File.cpp hw2/File.h)
 add_executable(temp
         lessons/pointers.cpp
-        lessons/sel-sort.cpp)
+        lessons/sel-sort.cpp lessons/dyn-array.cpp lessons/dyn-array.h)
