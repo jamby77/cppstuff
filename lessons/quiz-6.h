@@ -51,17 +51,27 @@ enum CardRank {
     MAX_RANKS
 };
 
+enum class BlackjackResult {
+    WIN_PLAYER,
+    WIN_DEALER,
+    TIE
+};
+
 struct Card {
     CardRank rank;
     CardSuit suit;
 };
 
 void printCard(const Card &card);
-std::array<Card, 52> buildDeck();
-void printDeck(const std::array<Card, 52> &deck);
+typedef std::array<Card, 52> Deck;
+
+Deck buildDeck();
+void printDeck(const Deck &deck);
 
 void swapCards(Card &card1, Card &card2);
-void shuffleDeck(std::array<Card, 52> &deck);
+void shuffleDeck(Deck &deck);
 
 int getCardValue(const Card &card);
+char getPlayerChoice();
+BlackjackResult playBlackjack(const Deck &deck);
 #endif //IVA_QUIZ_6_H
