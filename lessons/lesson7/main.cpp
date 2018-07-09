@@ -25,8 +25,16 @@ void testFac() {
     }
 }
 
+void testPrintDecToBin() {
+    int n;
+    std::cout << "Enter an integer: ";
+    std::cin >> n;
+    printDecToBin(n);
+}
+
 int main() {
 //    executePointerFcn();
-    testFac();
+//    testFac();
+    testPrintDecToBin();
     return 0;
 }
