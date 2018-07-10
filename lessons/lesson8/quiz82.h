@@ -8,9 +8,14 @@
 #include <iostream>
 
 class IntPair {
+    int m_a{};
+    int m_b{};
 public:
-    int m_a;
-    int m_b;
+    IntPair() : m_a{}, m_b{} {}
+    IntPair(int a, int b) : m_a(a), m_b(b) {}
+    IntPair(const IntPair &ip) {
+        set(ip.m_a, ip.m_b);
+    }
 
     void set(int a, int b) {
         m_a = a;

@@ -11,11 +11,13 @@ int main() {
 }
 
 void runQuiz82() {
-    IntPair p1{};
+    IntPair p1;
     p1.set(1, 1);
 
-    IntPair p2{2, 2};
+    IntPair p2{p1};
 
+    IntPair p3{1, 2};
     p1.print();
     p2.print();
+    p3.print();
 }
