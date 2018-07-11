@@ -4,7 +4,6 @@
 
 #include <iostream>
 #include <algorithm>
-#include <utility>
 #include <ctime>
 #include <random>
 #include "quiz-6.h"
@@ -12,250 +11,235 @@
 int items[3] = {0};
 
 void initItems() {
-    items[HEALTH_POTION] = 2;
-    items[TORCH] = 5;
-    items[ARROW] = 10;
+  items[HEALTH_POTION] = 2;
+  items[TORCH] = 5;
+  items[ARROW] = 10;
 }
 
 int countTotalItems() {
-    initItems();
-    int total = 0;
-    for (auto item : items) {
-        total += item;
-    }
+  initItems();
+  int total = 0;
+  for (auto item : items) {
+    total += item;
+  }
 
-    return total;
+  return total;
 }
 
 Student *initStudents(int size) {
-    auto *students = new(std::nothrow) Student[size];
-    if (!students) {
-        return students;
-    }
-    for (int i = 0; i < size; ++i) {
-        std::cout << "Enter name and grade[Joe 82]: ";
-        std::string name;
-        int grade;
-        std::cin >> name;
-        std::cin >> grade;
-        students[i] = {name, grade};
-        clearStdin();
-    }
-
-    for (int startIdx = 0; startIdx < size - 1; ++startIdx) {
-        int smallIdx = startIdx;
-        for (int currIdx = startIdx + 1; currIdx < size; ++currIdx) {
-            if (students[currIdx].grade > students[smallIdx].grade) {
-                smallIdx = currIdx;
-            }
-        }
-        std::swap(students[startIdx], students[smallIdx]);
-    }
+  auto *students = new(std::nothrow) Student[size];
+  if (!students) {
     return students;
+  }
+  for (int i = 0; i < size; ++i) {
+    std::cout << "Enter name and grade[Joe 82]: ";
+    std::string name;
+    int grade;
+    std::cin >> name;
+    std::cin >> grade;
+    students[i] = {name, grade};
+    clearStdin();
+  }
+
+  for (int startIdx = 0; startIdx < size - 1; ++startIdx) {
+    int smallIdx = startIdx;
+    for (int currIdx = startIdx + 1; currIdx < size; ++currIdx) {
+      if (students[currIdx].grade > students[smallIdx].grade) {
+        smallIdx = currIdx;
+      }
+    }
+    std::swap(students[startIdx], students[smallIdx]);
+  }
+  return students;
 }
 
 void clearStdin() {
-    if (std::cin.fail()) {
-        std::cin.clear();
-    }
-    std::cin.ignore(32767, '\n');
+  if (std::cin.fail()) {
+    std::cin.clear();
+  }
+  std::cin.ignore(32767, '\n');
 }
 
 void printPhrase(char *phrase) {
-    while (*phrase != '\0') {
-        std::cout << *(phrase++) << ' ';
-    }
+  while (*phrase != '\0') {
+    std::cout << *(phrase++) << ' ';
+  }
 }
 
 void printCard(const Card &card) {
-    std::string desc;
-    switch (card.rank) {
-        case RANK_2:
-        case RANK_3:
-        case RANK_4:
-        case RANK_5:
-        case RANK_6:
-        case RANK_7:
-        case RANK_8:
-        case RANK_9:
-        case RANK_10:
-            desc.append(std::to_string(card.rank + 2));
-            break;
-        case RANK_JACK:
-            desc.append("J");
-            break;
-        case RANK_QUEEN:
-            desc.append("Q");
-            break;
-        case RANK_KING:
-            desc.append("K");
-            break;
-        case RANK_ACE:
-            desc.append("A");
-            break;
-        case MAX_RANKS:
-        default:
-            desc.append("WTF");
-            break;
-    }
+  std::string desc;
+  switch (card.rank) {
+    case RANK_2:
+    case RANK_3:
+    case RANK_4:
+    case RANK_5:
+    case RANK_6:
+    case RANK_7:
+    case RANK_8:
+    case RANK_9:
+    case RANK_10:desc.append(std::to_string(card.rank + 2));
+      break;
+    case RANK_JACK:desc.append("J");
+      break;
+    case RANK_QUEEN:desc.append("Q");
+      break;
+    case RANK_KING:desc.append("K");
+      break;
+    case RANK_ACE:desc.append("A");
+      break;
+    case MAX_RANKS:
+    default:desc.append("WTF");
+      break;
+  }
 //    desc.append(" ");
-    switch (card.suit) {
-        case SUIT_CLUB:
-            desc.append("♣");
-            break;
-        case SUIT_HEART:
-            desc.append("♥");
-            break;
-        case SUIT_SPADE:
-            desc.append("♠");
-            break;
-        case SUIT_DIAMOND:
-            desc.append("♠");
-            break;
-        case MAX_SUITS:
-        default:
-            desc.append("WTF");
-            break;
-    }
-    std::cout << desc << '\n';
+  switch (card.suit) {
+    case SUIT_CLUB:desc.append("♣");
+      break;
+    case SUIT_HEART:desc.append("♥");
+      break;
+    case SUIT_SPADE:desc.append("♠");
+      break;
+    case SUIT_DIAMOND:desc.append("♠");
+      break;
+    case MAX_SUITS:
+    default:desc.append("WTF");
+      break;
+  }
+  std::cout << desc << '\n';
 }
 
 Deck buildDeck() {
-    const auto i = 52;
-    std::array<Card, i> deck{};
-    const auto cardsInASuit = 13;
-    for (int suit = 0; suit < MAX_SUITS; ++suit) {
-        for (int rank = 0; rank < MAX_RANKS; ++rank) {
-            int idx = (suit * cardsInASuit) + rank; // (0*13)+0|(1*13)+0
-            deck[idx].rank = static_cast<CardRank >(rank);
-            deck[idx].suit = static_cast<CardSuit >(suit);
-        }
+  const auto i = 52;
+  std::array<Card, i> deck{};
+  const auto cardsInASuit = 13;
+  for (int suit = 0; suit < MAX_SUITS; ++suit) {
+    for (int rank = 0; rank < MAX_RANKS; ++rank) {
+      int idx = (suit * cardsInASuit) + rank; // (0*13)+0|(1*13)+0
+      deck[idx].rank = static_cast<CardRank >(rank);
+      deck[idx].suit = static_cast<CardSuit >(suit);
     }
-    return deck;
+  }
+  return deck;
 }
 
 void printDeck(const Deck &deck) {
-    for (Card c: deck) {
-        printCard(c);
-    }
-    std::cout << '\n';
+  for (Card c: deck) {
+    printCard(c);
+  }
+  std::cout << '\n';
 }
 
 void swapCards(Card &card1, Card &card2) {
-    Card temp = card1;
-    card1 = card2;
-    card2 = temp;
+  Card temp = card1;
+  card1 = card2;
+  card2 = temp;
 }
 
 void shuffleDeck(Deck &deck) {
-    std::srand(static_cast<unsigned int>(std::time(nullptr)));
-    std::random_device rd;
-    std::mt19937_64 mersenne(rd());
-    std::uniform_int_distribution<> randomCard(0, 51);
+  std::srand(static_cast<unsigned int>(std::time(nullptr)));
+  std::random_device rd;
+  std::mt19937_64 mersenne(rd());
+  std::uniform_int_distribution<> randomCard(0, 51);
 
-    for (int i = 0; i < 52; ++i) {
-        int shuffleIdx = randomCard(mersenne);
-        swapCards(deck[i], deck[shuffleIdx]);
-    }
+  for (int i = 0; i < 52; ++i) {
+    int shuffleIdx = randomCard(mersenne);
+    swapCards(deck[i], deck[shuffleIdx]);
+  }
 }
 
 int getCardValue(const Card &card) {
-    int value{0};
-    switch (card.rank) {
-        case RANK_2:
-        case RANK_3:
-        case RANK_4:
-        case RANK_5:
-        case RANK_6:
-        case RANK_7:
-        case RANK_8:
-        case RANK_9:
-            value = static_cast<int>(card.rank) + 2;
-            break;
-        case RANK_10:
-        case RANK_JACK:
-        case RANK_QUEEN:
-        case RANK_KING:
-            value = 10;
-            break;
-        case RANK_ACE:
-            value = 11;
-            break;
-        case MAX_RANKS:
-        default:
-            value = -1;
-            break;
-    }
-    return value;
+  int value{0};
+  switch (card.rank) {
+    case RANK_2:
+    case RANK_3:
+    case RANK_4:
+    case RANK_5:
+    case RANK_6:
+    case RANK_7:
+    case RANK_8:
+    case RANK_9:value = static_cast<int>(card.rank) + 2;
+      break;
+    case RANK_10:
+    case RANK_JACK:
+    case RANK_QUEEN:
+    case RANK_KING:value = 10;
+      break;
+    case RANK_ACE:value = 11;
+      break;
+    case MAX_RANKS:
+    default:value = -1;
+      break;
+  }
+  return value;
 }
 
 void printTurn(const std::string &player, const Card &card) {
-    std::cout << player << ": ";
-    printCard(card);
+  std::cout << player << ": ";
+  printCard(card);
 }
 
 BlackjackResult playBlackjack(const Deck &deck) {
-    const Card *cardPtr = &deck[0];
-    int totalPlayer = 0,
-            totalDealer = 0;
+  const Card *cardPtr = &deck[0];
+  int totalPlayer = 0,
+      totalDealer = 0;
 
-    const auto dealer = "Dealer";
-    const auto player = "Player";
+  const auto dealer = "Dealer";
+  const auto player = "Player";
 
-    printTurn(dealer, *cardPtr);
-    totalDealer += getCardValue(*(cardPtr++)); // dealer first card
+  printTurn(dealer, *cardPtr);
+  totalDealer += getCardValue(*(cardPtr++)); // dealer first card
 
-    printTurn(player, *cardPtr);
-    totalPlayer += getCardValue(*(cardPtr++)); // player first card
-    printTurn(player, *cardPtr);
-    totalPlayer += getCardValue(*(cardPtr++)); // player second card
+  printTurn(player, *cardPtr);
+  totalPlayer += getCardValue(*(cardPtr++)); // player first card
+  printTurn(player, *cardPtr);
+  totalPlayer += getCardValue(*(cardPtr++)); // player second card
 
-    while (true) {
-        std::cout << "Player total: " << totalPlayer << "\n";
-        if (getPlayerChoice() == 's')
-            break;
-        // hit
-        printTurn(player, *cardPtr);
-        auto cardValue = getCardValue(*(cardPtr++));
-        if (cardValue == 11 && (totalPlayer + cardValue) > 21) {
-            // if it is an ace and value 11 will make it go over 21, count it as 1
-            cardValue = 1;
-        }
-        totalPlayer += cardValue;
-        if (totalPlayer > 21) {
-            break;
-        }
-    }
+  while (true) {
     std::cout << "Player total: " << totalPlayer << "\n";
-    // stand
+    if (getPlayerChoice() == 's')
+      break;
+    // hit
+    printTurn(player, *cardPtr);
+    auto cardValue = getCardValue(*(cardPtr++));
+    if (cardValue == 11 && (totalPlayer + cardValue) > 21) {
+      // if it is an ace and value 11 will make it go over 21, count it as 1
+      cardValue = 1;
+    }
+    totalPlayer += cardValue;
     if (totalPlayer > 21) {
-        // if score over 21, player looses
-        return BlackjackResult::WIN_DEALER;
+      break;
     }
+  }
+  std::cout << "Player total: " << totalPlayer << "\n";
+  // stand
+  if (totalPlayer > 21) {
+    // if score over 21, player looses
+    return BlackjackResult::WIN_DEALER;
+  }
 
-    while (totalDealer < 17) {
-        // hit
-        printTurn(dealer, *cardPtr);
-        totalDealer += getCardValue(*(cardPtr++));
-    }
-    std::cout << "Dealer total: " << totalDealer << "\n";
-    // stand
-    if (totalDealer > 21) {
-        // if score over 21, dealer looses
-        return BlackjackResult::WIN_PLAYER;
-    }
-    return totalPlayer > totalDealer ? BlackjackResult::WIN_PLAYER :
-           (totalPlayer == totalDealer) ? BlackjackResult::TIE
-                                        : BlackjackResult::WIN_DEALER;
+  while (totalDealer < 17) {
+    // hit
+    printTurn(dealer, *cardPtr);
+    totalDealer += getCardValue(*(cardPtr++));
+  }
+  std::cout << "Dealer total: " << totalDealer << "\n";
+  // stand
+  if (totalDealer > 21) {
+    // if score over 21, dealer looses
+    return BlackjackResult::WIN_PLAYER;
+  }
+  return totalPlayer > totalDealer ? BlackjackResult::WIN_PLAYER :
+         (totalPlayer == totalDealer) ? BlackjackResult::TIE
+                                      : BlackjackResult::WIN_DEALER;
 }
 
 char getPlayerChoice() {
-    std::cout << "(h) to hit, (s) to stand: ";
+  std::cout << "(h) to hit, (s) to stand: ";
 
-    char choice;
-    do {
-        std::cin >> choice;
-    } while (choice != 'h' && choice != 's');
-    return choice;
+  char choice;
+  do {
+    std::cin >> choice;
+  } while (choice != 'h' && choice != 's');
+  return choice;
 }
 

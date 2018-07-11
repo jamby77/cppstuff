@@ -3,7 +3,6 @@
 //
 
 #include <iostream>
-#include "dyn-array.h"
 #include "quiz-6.h"
 
 int main() {
@@ -29,20 +28,17 @@ int main() {
 
 //    char phrase[] = "Hello, World!";
 //    printPhrase(phrase);
-    auto deck = buildDeck();
-    shuffleDeck(deck);
-    BlackjackResult res = playBlackjack(deck);
-    std::cout << "\n\n\tResults:\n";
-    switch (res) {
-        case BlackjackResult::WIN_DEALER:
-            std::cout << "Dealer wins\n";
-            break;
-        case BlackjackResult::WIN_PLAYER:
-            std::cout << "Player wins\n";
-            break;
-        default:
-            std::cout << "It is a tie";
-    }
-    return 0;
+  auto deck = buildDeck();
+  shuffleDeck(deck);
+  BlackjackResult res = playBlackjack(deck);
+  std::cout << "\n\n\tResults:\n";
+  switch (res) {
+    case BlackjackResult::WIN_DEALER:std::cout << "Dealer wins\n";
+      break;
+    case BlackjackResult::WIN_PLAYER:std::cout << "Player wins\n";
+      break;
+    default:std::cout << "It is a tie";
+  }
+  return 0;
 }
 

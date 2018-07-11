@@ -8,8 +8,8 @@
 #include <string>
 
 int requestNamesLength();
-std::string* requestNames(int namesLength);
-void sortNames(std::string* names, int length);
-void printNames(std::string* names, int length);
+std::string *requestNames(int namesLength);
+void sortNames(std::string *names, int length);
+void printNames(std::string *names, int length);
 
 #endif //IVA_DYN_ARRAY_H

@@ -6,35 +6,35 @@
 #include "quiz711.h"
 
 void executePointerFcn() {
-    int int1 = intInput("Enter first number: ");
-    int int2 = intInput("Enter second number: ");
-    char operation = opInput();
+  int int1 = intInput("Enter first number: ");
+  int int2 = intInput("Enter second number: ");
+  char operation = opInput();
 
-    arithmeticFcn pFunction = getArithmeticFunction(operation);
-    if (pFunction) {
-        std::cout << int1 << ' ' << operation << ' ' << int2 << " = " << pFunction(int1, int2);
-    } else {
-        std::cout << "Could not find appropriate arithmetic function\n";
-    }
+  arithmeticFcn pFunction = getArithmeticFunction(operation);
+  if (pFunction) {
+    std::cout << int1 << ' ' << operation << ' ' << int2 << " = " << pFunction(int1, int2);
+  } else {
+    std::cout << "Could not find appropriate arithmetic function\n";
+  }
 }
 
 void testFac() {
-    int n[]{0, 1, 2, 3, 4, 5, 6, 7};
-    for (auto i : n) {
-        std::cout << fac(i) << '\n';
-    }
+  int n[]{0, 1, 2, 3, 4, 5, 6, 7};
+  for (auto i : n) {
+    std::cout << fac(i) << '\n';
+  }
 }
 
 void testPrintDecToBin() {
-    int n;
-    std::cout << "Enter an integer: ";
-    std::cin >> n;
-    printDecToBin(n);
+  int n;
+  std::cout << "Enter an integer: ";
+  std::cin >> n;
+  printDecToBin(n);
 }
 
 int main() {
 //    executePointerFcn();
 //    testFac();
-    testPrintDecToBin();
-    return 0;
+  testPrintDecToBin();
+  return 0;
 }

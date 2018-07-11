@@ -16,10 +16,9 @@ int divide(int a, int b);
 using arithmeticFcn = int (*)(int, int);
 arithmeticFcn getArithmeticFunction(char op);
 
-struct arithmeticStruct
-{
-    char op;
-    arithmeticFcn fcn;
+struct arithmeticStruct {
+  char op;
+  arithmeticFcn fcn;
 };
 
 static arithmeticStruct arithmeticArray[]{
