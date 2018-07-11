@@ -27,10 +27,26 @@ class SimpleStack {
     std::array<int, 10> m_stack;
     int m_length{};
 public:
-    SimpleStack(): m_stack{}, m_length{} {};
+    SimpleStack() : m_stack{}, m_length{} {};
+
     void reset();
+
     bool push(int a);
+
     int pop();
+
+    void print();
+};
+
+class RGBA {
+    std::uint8_t m_red;
+    std::uint8_t m_green;
+    std::uint8_t m_blue;
+    std::uint8_t m_alpha;
+public:
+    explicit RGBA(uint8_t r = 0, uint8_t g = 0, uint8_t b = 0, uint8_t a = 255)
+            : m_red{r}, m_green{g}, m_blue{b}, m_alpha{a} {};
+
     void print();
 };
 

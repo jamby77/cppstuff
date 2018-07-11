@@ -45,3 +45,7 @@ void SimpleStack::print() {
     }
     std::cout << " )\n";
 }
+
+void RGBA::print() {
+    std::cout << "r=" << static_cast<int >(m_red) << " g=" << static_cast<int >(m_green) << " b=" << static_cast<int >(m_blue) << " a=" << static_cast<int >(m_alpha);
+}

@@ -7,10 +7,12 @@
 void runQuiz82();
 
 void runQuiz83();
+void runQuiz85();
 
 int main() {
-//    runQuiz82();
+    runQuiz82();
     runQuiz83();
+    runQuiz85();
 }
 
 void runQuiz83() {
@@ -41,4 +43,9 @@ void runQuiz82() {
     p1.print();
     p2.print();
     p3.print();
+}
+
+void runQuiz85() {
+    RGBA teal(0, 127, 127);
+    teal.print();
 }
