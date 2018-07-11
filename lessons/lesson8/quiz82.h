@@ -60,12 +60,12 @@ class Ball {
   Ball() = default;
 
   // Constructor with only color parameter (radius will use default value)
-  Ball(const std::string &color) {
+  explicit Ball(const std::string &color) {
     m_color = color;
   }
 
   // Constructor with only radius parameter (color will use default value)
-  Ball(double radius) {
+  explicit Ball(double radius) {
     m_radius = radius;
   }
 
