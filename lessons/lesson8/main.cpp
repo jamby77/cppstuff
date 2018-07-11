@@ -6,8 +6,29 @@
 
 void runQuiz82();
 
+void runQuiz83();
+
 int main() {
-    runQuiz82();
+//    runQuiz82();
+    runQuiz83();
+}
+
+void runQuiz83() {
+    SimpleStack stack;
+    stack.reset();
+    stack.print();
+
+    stack.push(5);
+    stack.push(3);
+    stack.push(8);
+
+    stack.print();
+
+    stack.pop();
+    stack.print();
+    stack.reset();
+
+    stack.print();
 }
 
 void runQuiz82() {
