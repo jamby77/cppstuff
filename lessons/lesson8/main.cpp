@@ -36,9 +36,13 @@ void runFinalQuiz() {
 //  Monster skele = MonsterGenerator::generateMonster();
 //  skele.print();
 
-  const Card cardQueenHearts(Card::RANK_QUEEN, Card::SUIT_HEART);
-  cardQueenHearts.printCard();
-  std::cout << " has the value " << cardQueenHearts.getCardValue() << '\n';
+//  const Card cardQueenHearts(Card::RANK_QUEEN, Card::SUIT_HEART);
+//  cardQueenHearts.printCard();
+//  std::cout << " has the value " << cardQueenHearts.getCardValue() << '\n';
+Deck deck;
+deck.printDeck();
+deck.shuffleDeck();
+deck.printDeck();
 }
 
 void runQuiz83() {

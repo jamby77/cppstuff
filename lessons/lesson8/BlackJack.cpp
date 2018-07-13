@@ -8,113 +8,6 @@
 #include "BlackJack.h"
 /*
 
-void printCard(const Card &card) {
-  std::string desc;
-  switch (card.rank) {
-    case RANK_2:
-    case RANK_3:
-    case RANK_4:
-    case RANK_5:
-    case RANK_6:
-    case RANK_7:
-    case RANK_8:
-    case RANK_9:
-    case RANK_10:desc.append(std::to_string(card.rank + 2));
-      break;
-    case RANK_JACK:desc.append("J");
-      break;
-    case RANK_QUEEN:desc.append("Q");
-      break;
-    case RANK_KING:desc.append("K");
-      break;
-    case RANK_ACE:desc.append("A");
-      break;
-    case MAX_RANKS:
-    default:desc.append("WTF");
-      break;
-  }
-//    desc.append(" ");
-  switch (card.suit) {
-    case SUIT_CLUB:desc.append("♣");
-      break;
-    case SUIT_HEART:desc.append("♥");
-      break;
-    case SUIT_SPADE:desc.append("♠");
-      break;
-    case SUIT_DIAMOND:desc.append("♠");
-      break;
-    case MAX_SUITS:
-    default:desc.append("WTF");
-      break;
-  }
-  std::cout << desc << '\n';
-}
-
-Deck buildDeck() {
-  const auto i = 52;
-  std::array<Card, i> deck{};
-  const auto cardsInASuit = 13;
-  for (int suit = 0; suit < MAX_SUITS; ++suit) {
-    for (int rank = 0; rank < MAX_RANKS; ++rank) {
-      int idx = (suit * cardsInASuit) + rank; // (0*13)+0|(1*13)+0
-      deck[idx].rank = static_cast<CardRank >(rank);
-      deck[idx].suit = static_cast<CardSuit >(suit);
-    }
-  }
-  return deck;
-}
-
-void printDeck(const Deck &deck) {
-  for (Card c: deck) {
-    printCard(c);
-  }
-  std::cout << '\n';
-}
-
-void swapCards(Card &card1, Card &card2) {
-  Card temp = card1;
-  card1 = card2;
-  card2 = temp;
-}
-
-void shuffleDeck(Deck &deck) {
-  std::srand(static_cast<unsigned int>(std::time(nullptr)));
-  std::random_device rd;
-  std::mt19937_64 mersenne(rd());
-  std::uniform_int_distribution<> randomCard(0, 51);
-
-  for (int i = 0; i < 52; ++i) {
-    int shuffleIdx = randomCard(mersenne);
-    swapCards(deck[i], deck[shuffleIdx]);
-  }
-}
-
-int getCardValue(const Card &card) {
-  int value{0};
-  switch (card.rank) {
-    case RANK_2:
-    case RANK_3:
-    case RANK_4:
-    case RANK_5:
-    case RANK_6:
-    case RANK_7:
-    case RANK_8:
-    case RANK_9:value = static_cast<int>(card.rank) + 2;
-      break;
-    case RANK_10:
-    case RANK_JACK:
-    case RANK_QUEEN:
-    case RANK_KING:value = 10;
-      break;
-    case RANK_ACE:value = 11;
-      break;
-    case MAX_RANKS:
-    default:value = -1;
-      break;
-  }
-  return value;
-}
-
 void printTurn(const std::string &player, const Card &card) {
   std::cout << player << ": ";
   printCard(card);
@@ -252,4 +145,38 @@ int Card::getCardValue() const {
       break;
   }
   return value;
+}
+
+Deck::Deck() {
+  const auto i = 52;
+  const auto cardsInASuit = 13;
+  for (int suit = 0; suit < Card::MAX_SUITS; ++suit) {
+    for (int rank = 0; rank < Card::MAX_RANKS; ++rank) {
+      int idx = (suit * cardsInASuit) + rank; // (0*13)+0|(1*13)+0
+      m_deck[idx] = Card(static_cast<Card::CardRank >(rank), static_cast<Card::CardSuit >(suit));
+    }
+  }
+}
+
+void Deck::printDeck() const {
+  for (Card c: m_deck) {
+    c.printCard();
+  }
+  std::cout << '\n';
+}
+void Deck::shuffleDeck() {
+  std::srand(static_cast<unsigned int>(std::time(nullptr)));
+  std::random_device rd;
+  std::mt19937_64 mersenne(rd());
+  std::uniform_int_distribution<> randomCard(0, 51);
+
+  for (int i = 0; i < 52; ++i) {
+    int shuffleIdx = randomCard(mersenne);
+    swapCards(m_deck[i], m_deck[shuffleIdx]);
+  }
+}
+void Deck::swapCards(Card &card1, Card &card2) {
+  Card temp = card1;
+  card1 = card2;
+  card2 = temp;
 }

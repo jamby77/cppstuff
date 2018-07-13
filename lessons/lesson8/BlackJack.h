@@ -40,6 +40,16 @@ class Card {
   void printCard() const;
   int getCardValue() const;
 };
+
+class Deck {
+ private:
+  std::array<Card, 52> m_deck;
+  void swapCards(Card &card1, Card &card2);
+ public:
+  Deck();
+  void printDeck() const;
+  void shuffleDeck();
+};
 /*
 
 enum class BlackjackResult {
@@ -48,11 +58,6 @@ enum class BlackjackResult {
   TIE
 };
 
-
-typedef std::array<Card, 52> Deck;
-
-Deck buildDeck();
-void printDeck(const Deck &deck);
 
 void swapCards(Card &card1, Card &card2);
 void shuffleDeck(Deck &deck);
