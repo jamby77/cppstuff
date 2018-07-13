@@ -39,10 +39,14 @@ void runFinalQuiz() {
 //  const Card cardQueenHearts(Card::RANK_QUEEN, Card::SUIT_HEART);
 //  cardQueenHearts.printCard();
 //  std::cout << " has the value " << cardQueenHearts.getCardValue() << '\n';
-Deck deck;
-deck.printDeck();
-deck.shuffleDeck();
-deck.printDeck();
+  Deck deck;
+  deck.printDeck();
+  std::cout << '\n';
+  std::cout << '\n';
+  deck.shuffleDeck();
+  std::cout << '\n';
+  std::cout << '\n';
+  deck.printDeck();
 }
 
 void runQuiz83() {

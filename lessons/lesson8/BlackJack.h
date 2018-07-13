@@ -44,13 +44,14 @@ class Card {
 class Deck {
  private:
   std::array<Card, 52> m_deck;
-  void swapCards(Card &card1, Card &card2);
+  int m_cardIndex = 0;
+  static void swapCards(Card &card1, Card &card2);
  public:
   Deck();
   void printDeck() const;
   void shuffleDeck();
+  const Card& dealCard();
 };
-/*
 
 enum class BlackjackResult {
   WIN_PLAYER,
@@ -58,15 +59,7 @@ enum class BlackjackResult {
   TIE
 };
 
-
-void swapCards(Card &card1, Card &card2);
-void shuffleDeck(Deck &deck);
-
 char getPlayerChoice();
 BlackjackResult playBlackjack(const Deck &deck);
- */
-class BlackJack {
-
-};
 
 #endif //IVA_BLACKJACK_H
