@@ -19,4 +19,4 @@ add_executable(temp
         lessons/pointers.cpp
         lessons/sel-sort.cpp lessons/dyn-array.cpp lessons/dyn-array.h lessons/quiz-6.cpp lessons/quiz-6.h)
 add_executable(lesson7 lessons/lesson7/calc.cpp lessons/lesson7/main.cpp lessons/lesson7/calc.h lessons/lesson7/quiz711.cpp lessons/lesson7/quiz711.h)
-add_executable(lesson8 lessons/lesson8/quiz82.h lessons/lesson8/quiz82.cpp lessons/lesson8/main.cpp lessons/lesson8/Point2d.cpp lessons/lesson8/Point2d.h)
+add_executable(lesson8 lessons/lesson8/quiz82.h lessons/lesson8/quiz82.cpp lessons/lesson8/main.cpp lessons/lesson8/Point2d.cpp lessons/lesson8/Point2d.h lessons/lesson8/Monster.cpp lessons/lesson8/Monster.h)
