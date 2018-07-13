@@ -2,6 +2,7 @@
 // Created by pdzhambazov on 10.07.18.
 //
 
+#include "BlackJack.h"
 #include "quiz82.h"
 #include "Point2d.h"
 #include "Monster.h"
@@ -32,8 +33,12 @@ void runFinalQuiz() {
 //  std::cout << "Distance between two points: " << first.distanceTo(second) << "\n";
 //  std::cout << "Distance between two points 2: " << distanceFrom(second, first) << "\n";
 
-  Monster skele = MonsterGenerator::generateMonster();
-  skele.print();
+//  Monster skele = MonsterGenerator::generateMonster();
+//  skele.print();
+
+  const Card cardQueenHearts(Card::RANK_QUEEN, Card::SUIT_HEART);
+  cardQueenHearts.printCard();
+  std::cout << " has the value " << cardQueenHearts.getCardValue() << '\n';
 }
 
 void runQuiz83() {
