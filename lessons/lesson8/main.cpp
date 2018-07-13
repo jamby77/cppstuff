@@ -40,13 +40,14 @@ void runFinalQuiz() {
 //  cardQueenHearts.printCard();
 //  std::cout << " has the value " << cardQueenHearts.getCardValue() << '\n';
   Deck deck;
-  deck.printDeck();
-  std::cout << '\n';
-  std::cout << '\n';
+//  deck.printDeck();
+//  std::cout << '\n';
+//  std::cout << '\n';
   deck.shuffleDeck();
-  std::cout << '\n';
-  std::cout << '\n';
-  deck.printDeck();
+//  std::cout << '\n';
+//  std::cout << '\n';
+//  deck.printDeck();
+  playBlackjack(deck);
 }
 
 void runQuiz83() {

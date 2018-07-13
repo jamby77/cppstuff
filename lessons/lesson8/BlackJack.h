@@ -50,7 +50,7 @@ class Deck {
   Deck();
   void printDeck() const;
   void shuffleDeck();
-  const Card& dealCard();
+  Card& dealCard();
 };
 
 enum class BlackjackResult {
@@ -60,6 +60,6 @@ enum class BlackjackResult {
 };
 
 char getPlayerChoice();
-BlackjackResult playBlackjack(const Deck &deck);
+BlackjackResult playBlackjack( Deck &deck);
 
 #endif //IVA_BLACKJACK_H

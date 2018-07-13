@@ -125,7 +125,7 @@ void Deck::swapCards(Card &card1, Card &card2) {
   card2 = temp;
 }
 
-const Card& Deck::dealCard(){
+Card& Deck::dealCard(){
   assert(m_cardIndex < 52);
   return m_deck[m_cardIndex++];
 }
