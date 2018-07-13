@@ -3,6 +3,7 @@
 //
 
 #include "quiz82.h"
+#include "Point2d.h"
 
 void runQuiz82();
 
@@ -11,11 +12,22 @@ void runQuiz83();
 void runQuiz85();
 void runQuiz85b();
 
+void runFinalQuiz();
 int main() {
   runQuiz82();
   runQuiz83();
   runQuiz85();
   runQuiz85b();
+  runFinalQuiz();
+}
+void runFinalQuiz() {
+  Point2d first;
+  Point2d second(3.0, 4.0);
+  first.print();
+  second.print();
+
+  std::cout << "Distance between two points: " << first.distanceTo(second) << "\n";
+  std::cout << "Distance between two points 2: " << distanceFrom(second, first) << "\n";
 }
 
 void runQuiz83() {
