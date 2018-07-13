@@ -18,3 +18,6 @@ double Point2d::distanceTo(const Point2d &p) const {
 double distanceFrom(const Point2d &p1, const Point2d &p2) {
   return sqrt((p1.m_x - p2.m_x) * (p1.m_x - p2.m_x) + (p1.m_y - p2.m_y) * (p1.m_y - p2.m_y));
 }
+Point2d::~Point2d() {
+//  delete[] m_data;
+}

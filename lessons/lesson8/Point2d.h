@@ -11,6 +11,7 @@ class Point2d {
   double m_y;
  public:
   explicit Point2d(double x = 0.0, double y = 0.0);
+  ~Point2d();
   void print();
   double distanceTo(const Point2d &p) const;
   friend double distanceFrom(const Point2d &p1, const Point2d &p2);
