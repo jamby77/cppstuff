@@ -4,6 +4,7 @@
 
 #include "quiz82.h"
 #include "Point2d.h"
+#include "Monster.h"
 
 void runQuiz82();
 
@@ -20,6 +21,7 @@ int main() {
   runQuiz85b();
   runFinalQuiz();
 }
+
 void runFinalQuiz() {
   Point2d first;
   Point2d second(3.0, 4.0);
@@ -28,6 +30,9 @@ void runFinalQuiz() {
 
   std::cout << "Distance between two points: " << first.distanceTo(second) << "\n";
   std::cout << "Distance between two points 2: " << distanceFrom(second, first) << "\n";
+
+  Monster skele(Monster::Skeleton, "Bones", "*rattle*", 4);
+  skele.print();
 }
 
 void runQuiz83() {
