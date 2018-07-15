@@ -28,3 +28,13 @@ void Fraction::reduce() {
   m_num = m_num/commonDenom;
   m_denom = m_denom/commonDenom;
 }
+std::ostream &operator<<(std::ostream &out, const Fraction &f) {
+  out << f.m_num << "/" << f.m_denom << '\n';
+  return out;
+}
+std::istream &operator>>(std::istream &in, Fraction &f) {
+  in >> f.m_num;
+  in >> f.m_denom;
+  return in;
+}
+
