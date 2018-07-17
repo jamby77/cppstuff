@@ -2,13 +2,32 @@
 // Created by Petar Dzhambazov on 14.07.18.
 //
 
+#include <vector>
+#include <algorithm>
+#include <iostream>
 #include "Fraction.h"
+#include "Car.h"
 void runQuiz92a();
 void runQuiz92b();
+void runQuiz96();
 int main(){
   runQuiz92a();
   runQuiz92b();
+  runQuiz96();
 }
+void runQuiz96() {
+  std::vector<Car> v;
+  v.push_back(Car("Toyota", "Corolla"));
+  v.push_back(Car("Honda", "Accord"));
+  v.push_back(Car("Toyota", "Camry"));
+  v.push_back(Car("Honda", "Civic"));
+
+  std::sort(v.begin(), v.end()); // requires an overloaded operator<
+
+  for (auto &car : v)
+    std::cout << car << '\n'; // requires an overloaded operator<<
+}
+
 void runQuiz92b() {
   Fraction f1(2, 5);
   f1.print();
