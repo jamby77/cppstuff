@@ -7,20 +7,32 @@
 #include <iostream>
 #include "Fraction.h"
 #include "Car.h"
+#include "GradeMap.h"
 void runQuiz92a();
 void runQuiz92b();
 void runQuiz96();
-int main(){
+void runQuiz98();
+int main() {
   runQuiz92a();
   runQuiz92b();
   runQuiz96();
+  runQuiz98();
 }
+
+void runQuiz98() {
+  GradeMap grades;
+  grades["Joe"] = 'A';
+  grades["Frank"] = 'B';
+  std::cout << "Joe has a grade of " << grades["Joe"] << '\n';
+  std::cout << "Frank has a grade of " << grades["Frank"] << '\n';
+}
+
 void runQuiz96() {
   std::vector<Car> v;
-  v.push_back(Car("Toyota", "Corolla"));
-  v.push_back(Car("Honda", "Accord"));
-  v.push_back(Car("Toyota", "Camry"));
-  v.push_back(Car("Honda", "Civic"));
+  v.emplace_back("Toyota", "Corolla");
+  v.emplace_back("Honda", "Accord");
+  v.emplace_back("Toyota", "Camry");
+  v.emplace_back("Honda", "Civic");
 
   std::sort(v.begin(), v.end()); // requires an overloaded operator<
 
