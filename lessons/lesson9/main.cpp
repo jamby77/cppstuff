@@ -8,15 +8,38 @@
 #include "Fraction.h"
 #include "Car.h"
 #include "GradeMap.h"
+#include "Matrix.h"
+#include "Accumulator.h"
+#include "MyString.h"
 void runQuiz92a();
 void runQuiz92b();
 void runQuiz96();
 void runQuiz98();
+void lesson99();
+void runQuiz99();
 int main() {
   runQuiz92a();
   runQuiz92b();
   runQuiz96();
   runQuiz98();
+  lesson99();
+  runQuiz99();
+}
+void runQuiz99() {
+    MyString string("Hello, world!");
+    std::cout << string(5, 7) << '\n'; // start at index 7 and return 5 characters
+}
+
+void lesson99() {
+  Matrix matrix;
+  matrix(1, 2) = 4.5;
+  std::cout << matrix(1, 2) << '\n';
+  matrix();
+  std::cout << matrix(1, 2) << '\n';
+
+  Accumulator acc;
+  std::cout << acc(10) << '\n';
+  std::cout << acc(20) << '\n';
 }
 
 void runQuiz98() {
