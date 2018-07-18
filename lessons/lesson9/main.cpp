@@ -12,6 +12,7 @@
 #include "Accumulator.h"
 #include "MyString.h"
 #include "Average.h"
+#include "IntArray.h"
 void runQuiz92a();
 void runQuiz92b();
 void runQuiz96();
@@ -20,6 +21,8 @@ void lesson99();
 void runQuiz99();
 void runFinalQuiz();
 void runTwo();
+void runThree();
+IntArray fillArray();
 int main() {
   runQuiz92a();
   runQuiz92b();
@@ -31,6 +34,27 @@ int main() {
 }
 void runFinalQuiz() {
   runTwo();
+  runThree();
+}
+void runThree() {
+  IntArray a = fillArray();
+  std::cout << a << '\n';
+
+  IntArray b(1);
+  a = a;
+  b = a;
+
+  std::cout << b << '\n';
+}
+IntArray fillArray() {
+  IntArray a(5);
+  a[0] = 5;
+  a[1] = 8;
+  a[2] = 2;
+  a[3] = 3;
+  a[4] = 6;
+
+  return a;
 }
 void runTwo() {
   Average avg;
