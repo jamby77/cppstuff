@@ -11,12 +11,15 @@
 #include "Matrix.h"
 #include "Accumulator.h"
 #include "MyString.h"
+#include "Average.h"
 void runQuiz92a();
 void runQuiz92b();
 void runQuiz96();
 void runQuiz98();
 void lesson99();
 void runQuiz99();
+void runFinalQuiz();
+void runTwo();
 int main() {
   runQuiz92a();
   runQuiz92b();
@@ -24,10 +27,35 @@ int main() {
   runQuiz98();
   lesson99();
   runQuiz99();
+  runFinalQuiz();
+}
+void runFinalQuiz() {
+  runTwo();
+}
+void runTwo() {
+  Average avg;
+
+  avg += 4;
+  std::cout << avg << '\n'; // 4 / 1 = 4
+
+  avg += 8;
+  std::cout << avg << '\n'; // (4 + 8) / 2 = 6
+
+  avg += 24;
+  std::cout << avg << '\n'; // (4 + 8 + 24) / 3 = 12
+
+  avg += -10;
+  std::cout << avg << '\n'; // (4 + 8 + 24 - 10) / 4 = 6.5
+
+  (avg += 6) += 10; // 2 calls chained together
+  std::cout << avg << '\n'; // (4 + 8 + 24 - 10 + 6 + 10) / 6 = 7
+
+  Average copy = avg;
+  std::cout << copy << '\n';
 }
 void runQuiz99() {
-    MyString string("Hello, world!");
-    std::cout << string(5, 7) << '\n'; // start at index 7 and return 5 characters
+  MyString string("Hello, world!");
+  std::cout << string(5, 7) << '\n'; // start at index 7 and return 5 characters
 }
 
 void lesson99() {
