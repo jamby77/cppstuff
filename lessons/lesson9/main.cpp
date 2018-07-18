@@ -16,7 +16,6 @@
 void runQuiz92a();
 void runQuiz92b();
 void runQuiz93();
-int main(){
 void runQuiz96();
 void runQuiz98();
 void lesson99();
@@ -113,20 +112,20 @@ void runQuiz93() {
   std::cout << "Enter fraction 2: ";
   std::cin >> f2;
 
-  std::cout << f1 << " * " << f2 << " is " << f1 * f2 << '\n';
+  std::cout << f1 << " * " << f2 << " is " << f1*f2 << '\n';
 }
-  void runQuiz96() {
-    std::vector<Car> v;
-    v.emplace_back("Toyota", "Corolla");
-    v.emplace_back("Honda", "Accord");
-    v.emplace_back("Toyota", "Camry");
-    v.emplace_back("Honda", "Civic");
+void runQuiz96() {
+  std::vector<Car> v;
+  v.emplace_back("Toyota", "Corolla");
+  v.emplace_back("Honda", "Accord");
+  v.emplace_back("Toyota", "Camry");
+  v.emplace_back("Honda", "Civic");
 
-    std::sort(v.begin(), v.end()); // requires an overloaded operator<
+  std::sort(v.begin(), v.end()); // requires an overloaded operator<
 
-    for (auto &car : v)
-      std::cout << car << '\n'; // requires an overloaded operator<<
-  }
+  for (auto &car : v)
+    std::cout << car << '\n'; // requires an overloaded operator<<
+}
 void runQuiz92b() {
   Fraction f1(2, 5);
   f1.print();
@@ -134,16 +133,16 @@ void runQuiz92b() {
   Fraction f2(3, 8);
   f2.print();
 
-  Fraction f3 = f1 * f2;
+  Fraction f3 = f1*f2;
   f3.print();
 
-  Fraction f4 = f1 * 2;
+  Fraction f4 = f1*2;
   f4.print();
 
-  Fraction f5 = 2 * f2;
+  Fraction f5 = 2*f2;
   f5.print();
 
-  Fraction f6 = Fraction(1, 2) * Fraction(2, 3) * Fraction(3, 4);
+  Fraction f6 = Fraction(1, 2)*Fraction(2, 3)*Fraction(3, 4);
   f6.print();
 }
 void runQuiz92a() {
