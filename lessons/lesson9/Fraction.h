@@ -10,7 +10,7 @@ class Fraction {
   int m_num;
   int m_denom;
  public:
-  explicit Fraction(int numerator = 1, int denominator = 1);
+  Fraction(int numerator = 1, int denominator = 1);
   void print();
   friend Fraction operator*(Fraction f1, Fraction f2);
   friend Fraction operator*(Fraction f, int n);
