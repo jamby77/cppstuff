@@ -3,6 +3,7 @@
 //
 
 #include <cassert>
+#include <unordered_set>
 #include "IntArray.h"
 void IntArray::init(int size) {
   assert(size >= 0 && "IntArray: size should be more than 0");
@@ -10,6 +11,8 @@ void IntArray::init(int size) {
     m_int = nullptr;
   else
     m_int = new int[size];
+
+  m_size = size;
 }
 IntArray::IntArray(int size) : m_size{size} {
   init(m_size);
@@ -121,3 +124,14 @@ IntArray::IntArray(const std::initializer_list<int> &list) : IntArray(static_cas
     m_int[count++] = el;
   }
 }
+IntArray &IntArray::operator=(const std::initializer_list<int> &list) {
+  if (static_cast<size_t >(m_size) != list.size()) {
+    reallocate(static_cast<int>(list.size()));
+  }
+  int count = 0;
+  for (auto &el : list) {
+    m_int[count++] = el;
+  }
+  return *this;
+}
+IntArray::IntArray() = default;

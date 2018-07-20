@@ -13,6 +13,7 @@ class IntArray {
   void init(int size);
   void assertIndex(int idx) { assert(idx >= 0 && idx <= m_size && "IntArray: subscript index too large"); }
  public:
+  IntArray();
   explicit IntArray(int size);
   IntArray(const IntArray &ia);
   IntArray(const std::initializer_list<int> &list);
@@ -27,6 +28,7 @@ class IntArray {
   void remove(int idx);
   int &operator[](const int idx);
   IntArray &operator=(const IntArray &ia);
+  IntArray &operator=(const std::initializer_list<int> &list);
   friend std::ostream &operator<<(std::ostream &out, const IntArray &ia);
 };
 

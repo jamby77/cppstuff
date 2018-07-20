@@ -37,7 +37,9 @@ int main() {
 }
 void run106() {
   // Declare an array with 10 elements
-  IntArray array{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+  IntArray array = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+
+  IntArray b = array;
 
 //    // Fill the array with numbers 1 through 10
 //    for (int i=0; i<10; i++)
@@ -56,6 +58,12 @@ void run106() {
   array.insertAtEnd(30);
   array.insertAtBeginning(40);
 
+  // Print out all the numbers
+  for (int j = 0; j < array.getLength(); j++)
+    std::cout << array[j] << " ";
+
+  std::cout << "\nAssigning" << '\n';
+  array = {1, 2, 3, 4, 5};
   // Print out all the numbers
   for (int j = 0; j < array.getLength(); j++)
     std::cout << array[j] << " ";
