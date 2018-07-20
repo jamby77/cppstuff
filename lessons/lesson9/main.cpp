@@ -15,6 +15,7 @@
 #include "IntArray.h"
 void runQuiz92a();
 void runQuiz92b();
+void runQuiz93();
 void runQuiz96();
 void runQuiz98();
 void lesson99();
@@ -128,7 +129,17 @@ void runQuiz98() {
   std::cout << "Joe has a grade of " << grades["Joe"] << '\n';
   std::cout << "Frank has a grade of " << grades["Frank"] << '\n';
 }
+void runQuiz93() {
+  Fraction f1;
+  std::cout << "Enter fraction 1: ";
+  std::cin >> f1;
 
+  Fraction f2;
+  std::cout << "Enter fraction 2: ";
+  std::cin >> f2;
+
+  std::cout << f1 << " * " << f2 << " is " << f1*f2 << '\n';
+}
 void runQuiz96() {
   std::vector<Car> v;
   v.emplace_back("Toyota", "Corolla");
@@ -141,7 +152,6 @@ void runQuiz96() {
   for (auto &car : v)
     std::cout << car << '\n'; // requires an overloaded operator<<
 }
-
 void runQuiz92b() {
   Fraction f1(2, 5);
   f1.print();
@@ -149,16 +159,16 @@ void runQuiz92b() {
   Fraction f2(3, 8);
   f2.print();
 
-  Fraction f3 = f1 * f2;
+  Fraction f3 = f1*f2;
   f3.print();
 
-  Fraction f4 = f1 * 2;
+  Fraction f4 = f1*2;
   f4.print();
 
-  Fraction f5 = 2 * f2;
+  Fraction f5 = 2*f2;
   f5.print();
 
-  Fraction f6 = Fraction(1, 2) * Fraction(2, 3) * Fraction(3, 4);
+  Fraction f6 = Fraction(1, 2)*Fraction(2, 3)*Fraction(3, 4);
   f6.print();
 }
 void runQuiz92a() {
