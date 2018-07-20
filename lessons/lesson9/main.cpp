@@ -36,29 +36,29 @@ int main() {
   run106();
 }
 void run106() {
-    // Declare an array with 10 elements
-    IntArray array(10);
+  // Declare an array with 10 elements
+  IntArray array{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 
-    // Fill the array with numbers 1 through 10
-    for (int i=0; i<10; i++)
-        array[i] = i+1;
+//    // Fill the array with numbers 1 through 10
+//    for (int i=0; i<10; i++)
+//        array[i] = i+1;
 
-    // Resize the array to 8 elements
-    array.resize(8);
+  // Resize the array to 8 elements
+  array.resize(8);
 
-    // Insert the number 20 before element with index 5
-    array.insertBefore(20, 5);
+  // Insert the number 20 before element with index 5
+  array.insertBefore(20, 5);
 
-    // Remove the element with index 3
-    array.remove(3);
+  // Remove the element with index 3
+  array.remove(3);
 
-    // Add 30 and 40 to the end and beginning
-    array.insertAtEnd(30);
-    array.insertAtBeginning(40);
+  // Add 30 and 40 to the end and beginning
+  array.insertAtEnd(30);
+  array.insertAtBeginning(40);
 
-    // Print out all the numbers
-    for (int j=0; j<array.getLength(); j++)
-        std::cout << array[j] << " ";
+  // Print out all the numbers
+  for (int j = 0; j < array.getLength(); j++)
+    std::cout << array[j] << " ";
 }
 void runFinalQuiz() {
   runTwo();
@@ -138,7 +138,7 @@ void runQuiz93() {
   std::cout << "Enter fraction 2: ";
   std::cin >> f2;
 
-  std::cout << f1 << " * " << f2 << " is " << f1*f2 << '\n';
+  std::cout << f1 << " * " << f2 << " is " << f1 * f2 << '\n';
 }
 void runQuiz96() {
   std::vector<Car> v;
@@ -159,16 +159,16 @@ void runQuiz92b() {
   Fraction f2(3, 8);
   f2.print();
 
-  Fraction f3 = f1*f2;
+  Fraction f3 = f1 * f2;
   f3.print();
 
-  Fraction f4 = f1*2;
+  Fraction f4 = f1 * 2;
   f4.print();
 
-  Fraction f5 = 2*f2;
+  Fraction f5 = 2 * f2;
   f5.print();
 
-  Fraction f6 = Fraction(1, 2)*Fraction(2, 3)*Fraction(3, 4);
+  Fraction f6 = Fraction(1, 2) * Fraction(2, 3) * Fraction(3, 4);
   f6.print();
 }
 void runQuiz92a() {

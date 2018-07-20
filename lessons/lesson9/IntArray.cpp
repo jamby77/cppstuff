@@ -115,3 +115,9 @@ void IntArray::remove(int idx) {
   m_int = data;
   m_size -= 1;
 }
+IntArray::IntArray(const std::initializer_list<int> &list) : IntArray(static_cast<int>(list.size())) {
+  int count = 0;
+  for (auto &el : list) {
+    m_int[count++] = el;
+  }
+}

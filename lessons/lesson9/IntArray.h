@@ -15,6 +15,7 @@ class IntArray {
  public:
   explicit IntArray(int size);
   IntArray(const IntArray &ia);
+  IntArray(const std::initializer_list<int> &list);
   ~IntArray();
   int getLength() { return m_size; }
   void clear();
