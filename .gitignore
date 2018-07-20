@@ -41,4 +41,5 @@ fmicoin
 
 dummy.cpp
 cmake-build-debug/
+build/
 main
