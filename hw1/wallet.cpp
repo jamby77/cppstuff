@@ -35,7 +35,7 @@ void setWalletOwner(Wallet &wallet, const int argc, char *argv[])
 {
     size_t len;
 
-    // pull out name
+    // pull out m_name
     for (size_t i = 3; i < argc; i++)
     {
         len = strlen(argv[i]) + 1;
@@ -46,7 +46,7 @@ void setWalletOwner(Wallet &wallet, const int argc, char *argv[])
 
         if (strlen(wallet.owner))
         {
-            // if part of name is already written add a space
+            // if part of m_name is already written add a space
             strncat(wallet.owner, " ", 1);
         }
         strncat(wallet.owner, argv[i], len);
@@ -57,7 +57,7 @@ unsigned addWallet(int argc, char *argv[])
 {
     if (argc < 4)
     {
-        // min 4 arguments expected: prog, command, amount, name
+        // min 4 arguments expected: prog, command, amount, m_name
         std::cout << "Not enough arguments to add wallet" << std::endl;
         return 0;
     }
