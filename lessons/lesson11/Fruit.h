@@ -13,8 +13,6 @@ class Fruit {
   Fruit(const std::string &name, const std::string &color);
   std::string getName() const;
   std::string getColor() const;
-  std::string getName();
-  std::string getColor();
 };
 
 #endif //IVA_FRUIT_H

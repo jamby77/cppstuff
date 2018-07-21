@@ -7,8 +7,9 @@
 
 #include "Fruit.h"
 class Apple : public Fruit {
-  double fiber = 0.0;
+  double m_fiber = 0.0;
  public:
+  Apple(const std::string &color);
   Apple(const std::string &name, const std::string &color, double fiber);
   friend std::ostream& operator<<(std::ostream &out, const Apple &a);
 };

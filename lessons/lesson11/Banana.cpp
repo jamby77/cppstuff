@@ -6,6 +6,7 @@
 #include <iostream>
 
 Banana::Banana(const std::string &name, const std::string &color) : Fruit(name, color) {}
+Banana::Banana(): Fruit("banana", "yellow") {}
 std::ostream &operator<<(std::ostream &out, const Banana &b) {
   out << "Banana(\"" << b.getName() << "\", \"" << b.getColor() << "\")\n";
   return out;
