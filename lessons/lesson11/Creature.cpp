@@ -2,6 +2,7 @@
 // Created by Petar Dzhambazov on 21.07.18.
 //
 
+#include <iostream>
 #include "Creature.h"
 const std::string &Creature::getName() const {
   return m_name;
@@ -28,4 +29,8 @@ bool Creature::isDead() {
 }
 void Creature::addGold(int gold) {
   m_gold += gold;
+  std::cout << "You found " << gold << " gold.\n";
+}
+void Creature::addDamage(int damage) {
+  m_damage += damage;
 }

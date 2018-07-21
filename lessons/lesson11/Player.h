@@ -10,6 +10,10 @@ class Player: public Creature {
  private:
   int m_level = 1;
  public:
+  int getLevel() const {
+    return m_level;
+  }
+ public:
   Player(const std::string &m_name);
   void levelUp();
 };

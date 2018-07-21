@@ -20,7 +20,7 @@ class Monster : public Creature {
   };
   static MonsterData monsterData[MAX_TYPES];
   static Monster getRandomMonster();
-  Monster(Type type);
+  explicit Monster(Type type);
 };
 
 #endif //IVA_MONSTER_H

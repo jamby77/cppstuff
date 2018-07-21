@@ -17,6 +17,7 @@ class Creature {
   void reduceHealth(int health);
   bool isDead();
   void addGold(int gold);
+  void addDamage(int damage);
  private:
   std::string m_name;
   char m_symbol;
