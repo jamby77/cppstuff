@@ -8,15 +8,34 @@
 #include "GrannySmith.h"
 #include "Creature.h"
 #include "Player.h"
+#include "Monster.h"
 
 void runQuiz114();
 void runFinal3a();
 void runFinal3b();
+void runFinal3c();
+void runFinal3e();
 int main() {
-  runQuiz114();
-  runFinal3a();
-  runFinal3b();
+//  runQuiz114();
+//  runFinal3a();
+//  runFinal3b();
+//  runFinal3c();
+  runFinal3e();
   return 0;
+}
+void runFinal3e() {
+  srand(static_cast<unsigned int>(time(0))); // set initial seed value to system clock
+  rand(); // get rid of first result
+
+  for (int i = 0; i < 10; ++i)
+  {
+    Monster m = Monster::getRandomMonster();
+    std::cout << "A " << m.getName() << " (" << m.getSymbol() << ") was created.\n";
+  }
+}
+void runFinal3c() {
+  Monster m(Monster::ORC);
+  std::cout << "A " << m.getName() << " (" << m.getSymbol() << ") was created.\n";
 }
 void runFinal3b() {
   std::cout << "Enter your name: ";
