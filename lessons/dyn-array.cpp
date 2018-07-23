@@ -16,7 +16,7 @@ int requestNamesLength() {
 std::string *requestNames(int namesLength) {
   auto *names = new std::string[namesLength];
   for (int i = 0; i < namesLength; ++i) {
-    std::cout << "Enter name #" << i + 1 << ": ";
+    std::cout << "Enter m_name #" << i + 1 << ": ";
 
     std::cin >> names[i];
   }

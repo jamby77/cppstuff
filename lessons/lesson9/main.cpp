@@ -13,6 +13,7 @@
 #include "MyString.h"
 #include "Average.h"
 #include "IntArray.h"
+
 void runQuiz92a();
 void runQuiz92b();
 void runQuiz93();
@@ -28,6 +29,7 @@ void run106();
 int main() {
 //  runQuiz92a();
 //  runQuiz92b();
+//  runQuiz93();
 //  runQuiz96();
 //  runQuiz98();
 //  lesson99();
@@ -68,11 +70,13 @@ void run106() {
   for (int j = 0; j < array.getLength(); j++)
     std::cout << array[j] << " ";
 }
-void runFinalQuiz() {
+void runFinalQuiz()
+{
   runTwo();
   runThree();
 }
-void runThree() {
+void runThree()
+{
   IntArray a = fillArray();
   std::cout << a << '\n';
 
@@ -82,7 +86,8 @@ void runThree() {
 
   std::cout << b << '\n';
 }
-IntArray fillArray() {
+IntArray fillArray()
+{
   IntArray a(5);
   a[0] = 5;
   a[1] = 8;
@@ -92,7 +97,8 @@ IntArray fillArray() {
 
   return a;
 }
-void runTwo() {
+void runTwo()
+{
   Average avg;
 
   avg += 4;
@@ -107,18 +113,20 @@ void runTwo() {
   avg += -10;
   std::cout << avg << '\n'; // (4 + 8 + 24 - 10) / 4 = 6.5
 
-  (avg += 6) += 10; // 2 calls chained together
+  (avg += 6) += 10;         // 2 calls chained together
   std::cout << avg << '\n'; // (4 + 8 + 24 - 10 + 6 + 10) / 6 = 7
 
   Average copy = avg;
   std::cout << copy << '\n';
 }
-void runQuiz99() {
+void runQuiz99()
+{
   MyString string("Hello, world!");
   std::cout << string(5, 7) << '\n'; // start at index 7 and return 5 characters
 }
 
-void lesson99() {
+void lesson99()
+{
   Matrix matrix;
   matrix(1, 2) = 4.5;
   std::cout << matrix(1, 2) << '\n';
@@ -130,14 +138,16 @@ void lesson99() {
   std::cout << acc(20) << '\n';
 }
 
-void runQuiz98() {
+void runQuiz98()
+{
   GradeMap grades;
   grades["Joe"] = 'A';
   grades["Frank"] = 'B';
   std::cout << "Joe has a grade of " << grades["Joe"] << '\n';
   std::cout << "Frank has a grade of " << grades["Frank"] << '\n';
 }
-void runQuiz93() {
+void runQuiz93()
+{
   Fraction f1;
   std::cout << "Enter fraction 1: ";
   std::cin >> f1;
@@ -148,7 +158,8 @@ void runQuiz93() {
 
   std::cout << f1 << " * " << f2 << " is " << f1 * f2 << '\n';
 }
-void runQuiz96() {
+void runQuiz96()
+{
   std::vector<Car> v;
   v.emplace_back("Toyota", "Corolla");
   v.emplace_back("Honda", "Accord");
@@ -160,7 +171,8 @@ void runQuiz96() {
   for (auto &car : v)
     std::cout << car << '\n'; // requires an overloaded operator<<
 }
-void runQuiz92b() {
+void runQuiz92b()
+{
   Fraction f1(2, 5);
   f1.print();
 
@@ -179,7 +191,8 @@ void runQuiz92b() {
   Fraction f6 = Fraction(1, 2) * Fraction(2, 3) * Fraction(3, 4);
   f6.print();
 }
-void runQuiz92a() {
+void runQuiz92a()
+{
   Fraction f1(1, 4);
   f1.print();
 

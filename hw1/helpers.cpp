@@ -7,7 +7,7 @@
 void printUsage()
 {
     std::cout
-        << "usage: (add-wallet|make-order|make-transaction) (amount) (name|walletid)"
+        << "usage: (add-wallet|make-order|make-transaction) (amount) (m_name|walletid)"
         << std::endl;
 }
 

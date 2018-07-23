@@ -32,7 +32,7 @@ Student *initStudents(int size) {
     return students;
   }
   for (int i = 0; i < size; ++i) {
-    std::cout << "Enter name and grade[Joe 82]: ";
+    std::cout << "Enter m_name and grade[Joe 82]: ";
     std::string name;
     int grade;
     std::cin >> name;

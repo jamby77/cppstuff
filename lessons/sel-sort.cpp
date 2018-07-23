@@ -91,7 +91,7 @@ void multiDimExample() {
 
 void cstrings() {
   char name[25];
-  std::cout << "Enter your name: ";
+  std::cout << "Enter your m_name: ";
 
   std::cin.getline(name, 25);
   std::cout << "You entered: " << name << "\n";
