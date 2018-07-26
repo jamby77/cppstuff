@@ -5,6 +5,9 @@
 #include <iostream>
 #include "Fraction.h"
 Fraction::Fraction(int numerator, int denominator) : m_num{numerator}, m_denom{denominator} {
+  if (m_denom == 0) {
+    throw std::runtime_error("Your fraction has an invalid denominator.");
+  }
   reduce();
 }
 void Fraction::print() {

@@ -26,6 +26,7 @@ void runTwo();
 void runThree();
 IntArray fillArray();
 void run106();
+void run141();
 int main() {
 //  runQuiz92a();
 //  runQuiz92b();
@@ -35,7 +36,23 @@ int main() {
 //  lesson99();
 //  runQuiz99();
 //  runFinalQuiz();
-  run106();
+//  run106();
+  run141();
+}
+void run141() {
+  int num, denom;
+  std::cout << "Enter the numerator: ";
+  std::cin >> num;
+  std::cout << "Enter the denominator: ";
+  std::cin >> denom;
+  try {
+    Fraction f{num, denom};
+    std::cout << f;
+  }
+  catch (std::runtime_error &e) {
+    std::cout << e.what() << "\n";
+  }
+
 }
 void run106() {
   // Declare an array with 10 elements
