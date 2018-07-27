@@ -24,3 +24,4 @@ add_executable(lesson9 lessons/lesson9/Fraction.cpp lessons/lesson9/Fraction.h l
 add_executable(lesson11 lessons/lesson11/Fruit.cpp lessons/lesson11/Fruit.h lessons/lesson11/main.cpp lessons/lesson11/Apple.cpp lessons/lesson11/Apple.h lessons/lesson11/Banana.cpp lessons/lesson11/Banana.h lessons/lesson11/GrannySmith.cpp lessons/lesson11/GrannySmith.h lessons/lesson11/Creature.cpp lessons/lesson11/Creature.h lessons/lesson11/Player.cpp lessons/lesson11/Player.h lessons/lesson11/Monster.cpp lessons/lesson11/Monster.h)
 add_executable(lesson12 lessons/lesson12/main.cpp lessons/lesson12/Shape.cpp lessons/lesson12/Shape.h lessons/lesson12/Point.cpp lessons/lesson12/Point.h lessons/lesson12/Triangle.cpp lessons/lesson12/Triangle.h lessons/lesson12/Circle.cpp lessons/lesson12/Circle.h)
 add_executable(lesson13 lessons/lesson13/main.cpp lessons/lesson13/Pair1.h lessons/lesson13/Pair.h)
+add_executable(lesson15  lessons/lesson15/main.cpp lessons/lesson15/DynamicArray.h)
