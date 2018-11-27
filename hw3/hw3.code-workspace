@@ -1,0 +1,18 @@
+{
+	"folders": [
+		{
+			"path": "hangman"
+		},
+		{
+			"path": "compressed"
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"__bit_reference": "cpp",
+			"algorithm": "cpp",
+			"bitset": "cpp",
+			"chrono": "cpp"
+		}
+	}
+}
