@@ -1,5 +1,5 @@
 #include <iostream>
-#include <algorithm>
+#include <cstring>
 
 using namespace std;
 
@@ -14,7 +14,7 @@ int main() {
   char str[MAX] = {'\0'};
   cin.getline(str, MAX);
 
-  int length = strlen(str);
+  int length = static_cast<int>(strlen(str));
   char matrix[MAX][MAX] = {'\0'};
 
   for (int k = 0; k < length; k++) {
@@ -29,10 +29,10 @@ int main() {
     }
   }
 
-  for (int t = 0; t < i - 1; t++) {
-    for (int p = t + 1; p < i; p++) {
-      if (matrix[t] > matrix[p]) {
-        int j = 0;
+  for (int t = 0; t <= i - 1; t++) {
+    for (int p = t + 1; p <= i; p++) {
+      if (strcmp(matrix[t], matrix[p]) > 0) {
+        j = 0;
         char c = matrix[t][0];
         while (c!='\0') {
           temp[j++] = c;
@@ -44,17 +44,19 @@ int main() {
           matrix[t][j++] = c;
           c = matrix[p][j];
         }
+        matrix[t][j] = c;
         j = 0;
         c = temp[0];
         while (c!='\0') {
           matrix[p][j++] = c;
           c = temp[j];
         }
+        matrix[p][j] = c;
       }
     }
   }
 
-  for (int t = 0; t < i; t++) {
+  for (int t = 0; t <= i; t++) {
     cout << matrix[t] << endl;
   }
 
