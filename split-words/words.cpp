@@ -38,6 +38,7 @@ int main() {
           temp[j++] = c;
           c = matrix[t][j];
         }
+        temp[j] = c;
         j = 0;
         c = matrix[p][0];
         while (c!='\0') {
