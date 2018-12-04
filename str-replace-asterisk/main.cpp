@@ -1,7 +1,3 @@
-//
-// Created by pdzhambazov on 04.12.18.
-//
-
 #include<iostream>
 #include <cstring>
 
