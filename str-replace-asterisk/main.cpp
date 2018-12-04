@@ -9,7 +9,7 @@ using namespace std;
 
 const int MAX = 100;
 
-void replaceChar(char str1[], char str2[], size_t size1, size_t size2) {
+void replaceChar(char str1[], const char str2[], size_t size1, size_t size2) {
 
     int count = 0;
 
