@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Web Component</title>
+</head>
+
+<body>
+    <h1>Pros Logo</h1>
+    <pros-logo>
+        <img src="no-image.png">
+    </pros-logo>
+    <pros-logo>
+        <img src="logo-200x72.png">
+    </pros-logo>
+    <script>
+        const template = document.createElement("template");
+        template.innerHTML = '<style>:host {display: inline-block}</style><slot></slot>';
+
+        class ProsLogo extends HTMLElement {
+            constructor() {
+                super();
+                console.log("Hello from logo");
+                this.attachShadow({
+                    mode: 'open'
+                });
+            }
+            connectedCallback() {
+                this.shadowRoot.appendChild(template.content.cloneNode(true));
+                this.animate([{
+                        transform: 'scale(0) rotate(0)'
+                    },
+                    {
+                        transform: 'scale(1) rotate(1800deg)'
+                    },
+                    {
+                        transform: 'scale(0) rotate(2160deg)'
+                    }
+                ], {
+                    duration: 1000,
+                    iterations: 2,
+                    easing: 'cubic-bezier(0, 0, 0.3, 1)',
+                    fill: "auto"
+                });
+            }
+        }
+        customElements.define('pros-logo', ProsLogo);
+    </script>
+</body>
+
+</html>
