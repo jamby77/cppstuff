@@ -43,3 +43,4 @@ dummy.cpp
 cmake-build-debug/
 build/
 main
+*.dSYM/
